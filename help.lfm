@@ -1,7 +1,7 @@
 object FHelp: TFHelp
-  Left = 152
+  Left = 964
   Height = 290
-  Top = 280
+  Top = 509
   Width = 359
   Caption = 'Help'
   ClientHeight = 290

@@ -1,12 +1,14 @@
 (*
- * Version: 00.09.11.
- * Author: Kārlis Kalviškis, 2022.11.21
+ * Version: 00.10.00.
+ * Author: Kārlis Kalviškis, 2025.03.16
  * License: GPLv3
  *)
 
 (*
  * Any setting to remember are registered in each form's property
- * SessionProperties .
+ * "SessionProperties".
+ * Misc/TIniPropStorage should be added to the form.
+ * This object is renamed as "RememberSetings".
  *)
 
 unit settings;
@@ -18,7 +20,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs,
   StdCtrls, ExtCtrls, DefaultTranslator, ComCtrls, Spin, ExtDlgs,
-  IniPropStorage, EditBtn, Buttons
+  IniPropStorage, EditBtn, Buttons, ComboEx
   ;
 
 type
@@ -38,9 +40,12 @@ type
     BOpenINI: TButton;
     BSaveINI: TButton;
     BAbout: TButton;
+    BBiggerFont: TButton;
     BTimer: TToggleBox;
     BRestart: TButton;
     BRestoreLogo: TButton;
+    BConsole: TButton;
+    BSmallerFont: TButton;
     CCloseMe: TCheckBox;
     ChDontCloseTimer: TCheckBox;
     ChFlashing3: TCheckBox;
@@ -58,6 +63,7 @@ type
     ChShowLogo: TCheckBox;
     ChWindowsPosition: TCheckBox;
     ColorDialog: TColorDialog;
+    ECMD_parameters: TEdit;
     EEndNote: TEdit;
     EMinutes: TFloatSpinEdit;
     EWarning1: TFloatSpinEdit;
@@ -65,14 +71,15 @@ type
     EWarning3: TFloatSpinEdit;
     ECMDtoRun: TFileNameEdit;
     FontDialog: TFontDialog;
-    GrConsole: TGroupBox;
     GrTimerMode: TGroupBox;
+    LParameters: TLabel;
     LPClock: TLabel;
     LTimerSection: TLabel;
     LTimerWSection: TLabel;
     LLogoSection: TLabel;
     PPClock: TPanel;
     RGrLogoPlacement: TRadioGroup;
+    RGrTimerMode : TRadioGroup;
     LLogoHArrow: TLabel;
     LLogoVArrow: TLabel;
     LLogoProportion: TLabel;
@@ -117,11 +124,12 @@ type
     BShowClock: TToggleBox;
     BStart: TToggleBox;
    procedure BAboutClick(Sender: TObject);
+   procedure BBiggerFontClick(Sender: TObject);
    procedure BChangeFontClick(Sender: TObject);
    procedure BChangeLogoChangeBounds(Sender: TObject);
    procedure BChangeLogoClick(Sender: TObject);
    procedure BClockClick(Sender: TObject);
-   procedure BCountDownChange(Sender: TObject);
+   procedure BConsoleClick(Sender: TObject);
    procedure BCountDownClick(Sender: TObject);
    procedure BHotKeysClick(Sender: TObject);
    procedure BOpenINIClick(Sender: TObject);
@@ -134,6 +142,7 @@ type
    procedure BSettingsARRClick(Sender: TObject);
    procedure BShowClockCaption;
    procedure BShowClockChange(Sender: TObject);
+   procedure BSmallerFontClick(Sender: TObject);
    procedure BStartClick(Sender: TObject);
    procedure BTimerClick(Sender: TObject);
    procedure ChFullScreenChange(Sender: TObject);
@@ -178,6 +187,7 @@ type
    procedure FormCreate(Sender: TObject);
    procedure GrConsoleResize(Sender: TObject);
    procedure RGrLogoPlacementSelectionChanged(Sender: TObject);
+   procedure RGrTimerModeClick(Sender: TObject);
    procedure SBHalfClick(Sender: TObject);
    procedure SBMainClick(Sender: TObject);
    procedure SBWarning1Click(Sender: TObject);
@@ -201,6 +211,7 @@ type
    procedure ShowFHelp;
    procedure SetFormSize;
    procedure ChangeMode;
+   procedure ChangeFontSize (FontSize : Integer);
   private
    procedure ResizeField(Sender: TCustomFloatSpinEdit);
    procedure deResizeField(Sender: TCustomFloatSpinEdit);
@@ -212,6 +223,7 @@ end;
 var
   FConfig: TFConfig;
 
+
 implementation
 
 {$R *.lfm}
@@ -219,10 +231,10 @@ implementation
 { TFConfig }
 
 (*
-  To use 'Main' and 'help' window's objects.
+  To use 'Main' and window's objects.
   Should be placed here not to run in circular refernce.
 *)
-uses basewindow, help;
+uses basewindow, help, console;
 
 resourcestring
 
@@ -243,6 +255,9 @@ resourcestring
   RStrHide = 'Hide';
   RStrShow = 'Show';
   RStrInvisible = 'Clock is invisible';
+  RstRemainingTime = 'Remaining time (MM:SS)';
+  RstElapsedTime = 'Time elapsed (MM:SS)';
+  RstClockTime = 'Clock mode (HH:MM)';
 
 
 procedure TFConfig.FormCreate(Sender: TObject);
@@ -277,11 +292,16 @@ begin
     STWarning2.Hint := RStrTextColourHint;
     SBWarning3.Hint := RStrBackgroudColourHint;
     STWarning3.Hint := RStrTextColourHint;
+    RGrTimerMode.Items.Add(RstRemainingTime);
+    RGrTimerMode.Items.Add(RstElapsedTime);
+    RGrTimerMode.Items.Add(RstClockTime);
+    RGrTimerMode.ItemIndex := 1;
+
     BShowClockCaption;
 
     EMinLogoHeight.Value :=  Ftimer.LogoMinHeight;
 
-    // Programmatic changes must be done when the control is disabled
+    // Programmatic changes must be done when the control is disabled.
     ChWindowsBorders.Enabled := false;
     if Ftimer.BorderStyle = bsNone then
        ChWindowsBorders.Checked := false
@@ -298,7 +318,7 @@ begin
     ChProgressBar.Checked := FTimer.PProgressBar.Visible;
     ChProgressBar.Enabled := true;
 
-    // Data for INI files
+    // Data for INI files.
     SaveFile.FileName := ApplicationName;
     SaveFile.DefaultExt := 'ini';
     SaveFile.InitialDir := GetAppConfigFile(False);
@@ -369,6 +389,12 @@ begin
              FTimer.ILogo.AnchorSide[akTop].Side := asrBottom;
        end;
   end;
+end;
+
+procedure TFConfig.RGrTimerModeClick(Sender: TObject);
+begin
+  if not FTimer.Timer1.Enabled then FTimer.ResetTimer;
+  ChangeMode;
 end;
 
 procedure TFConfig.SBHalfClick(Sender: TObject);
@@ -619,7 +645,7 @@ begin
      case Key of
        //[Enter]
        #13:
-             BSettingsARR.Click;
+             BSettingsAR.Click;
      end;
 end;
 
@@ -697,7 +723,7 @@ end;
 
 procedure TFConfig.FormActivate(Sender: TObject);
 begin
-   BSettingsA.Enabled := (FTimer.RUNING or BClock.Checked);
+   BSettingsA.Enabled := (FTimer.RUNING or (RGrTimerMode.ItemIndex = 2));
 end;
 
 procedure TFConfig.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -734,7 +760,7 @@ begin
           Self.Visible := false;
           Ftimer.Show;
         end;
-     if BClock.Checked then Ftimer.TimerFontSize;
+     if RGrTimerMode.ItemIndex = 2 then Ftimer.TimerFontSize;
 end;
 
 procedure TFConfig.BChangeFontClick(Sender: TObject);
@@ -750,6 +776,7 @@ begin
   FHelp.PTAbout.Show;
 end;
 
+
 procedure TFConfig.BChangeLogoChangeBounds(Sender: TObject);
 begin
   SetFormSize;
@@ -764,29 +791,38 @@ procedure TFConfig.BClockClick(Sender: TObject);
 begin
   if  BClock.State = cbChecked then
   Begin
-    BCountDown.State := cbUnchecked;
-    BTimer.State := cbUnchecked;
+    // Starting from Lazarus 3.0.0., the change of 'State' triggers the clicking event as well.
+    // BCountDown.State := cbUnchecked;
+    // BTimer.State := cbUnchecked;
     if not FTimer.Timer1.Enabled then FTimer.ResetTimer;
-  end
-  else
-    BCountDown.State := cbChecked;
+  end;
   ChangeMode;
+end;
+
+procedure TFConfig.BConsoleClick(Sender: TObject);
+begin
+  if not Assigned(FConsole) then
+    Begin
+    Application.CreateForm(TFConsole, FConsole);
+    end;
+  FConsole.RGrTimerMode.ItemIndex := RGrTimerMode.ItemIndex;
+  FConsole.BShowClock.State := BShowClock.State;
+  FConsole.BShowClock.Caption := BShowClock.Caption;
+  FConsole.EMinutes.Value := EMinutes.Value;
+  FConfig.Hide;
+  FConsole.Show;
 end;
 
 procedure TFConfig.ChangeMode;
 begin
-     BSettingsA.Enabled := (FTimer.RUNING or BClock.Checked);
-     BSettingsAR.Enabled := not BClock.Checked;
-     BSettingsARR.Enabled := not BClock.Checked;
-     PEndNote.Enabled := not BClock.Checked;
+     BSettingsA.Enabled := (FTimer.RUNING or (RGrTimerMode.ItemIndex = 2));
+     BSettingsAR.Enabled := not (RGrTimerMode.ItemIndex = 2);
+     BSettingsARR.Enabled := not (RGrTimerMode.ItemIndex = 2);
+     PEndNote.Enabled := not (RGrTimerMode.ItemIndex = 2);
      FTimer.TimerFontSize;
      BShowClockCaption;
 end;
 
-procedure TFConfig.BCountDownChange(Sender: TObject);
-begin
-
-end;
 
 procedure TFConfig.BCountDownClick(Sender: TObject);
 begin
@@ -855,7 +891,7 @@ var
   Me : TCustomFloatSpinEdit;
 begin
   Me := Sender;
-  Me.Width := Me.Width + 2 * FConfig.BiggerFont;
+  Me.Width := Me.Width + 3 * FConfig.BiggerFont;
   Me.Font.Size := Me.Font.Size + FConfig.BiggerFont;
 end;
 
@@ -864,7 +900,7 @@ var
   Me : TCustomFloatSpinEdit;
 begin
   Me := Sender;
-  Me.Width := Me.Width - 2 * FConfig.BiggerFont;
+  Me.Width := Me.Width - 3 * FConfig.BiggerFont;
   Me.Font.Size := Me.Font.Size - FConfig.BiggerFont;
 end;
 
@@ -892,6 +928,11 @@ begin
          FHelp.RememberSetings.Save;
          FHelp.RememberSetings.IniFileName := '';
        end;
+       if Assigned(FConsole) then begin
+         FConsole.RememberSetings.IniFileName := SaveFile.FileName;
+         FConsole.RememberSetings.Save;
+         FConsole.RememberSetings.IniFileName := '';
+       end;
        Self.Visible := true;
 end;
 
@@ -904,6 +945,11 @@ begin
        FHelp.RememberSetings.IniFileName := INIFileName;
        FHelp.RememberSetings.Restore;
        FHelp.RememberSetings.IniFileName := '';
+     end;
+     if Assigned(FConsole) then begin
+       FConsole.RememberSetings.IniFileName := INIFileName;
+       FConsole.RememberSetings.Restore;
+       FConsole.RememberSetings.IniFileName := '';
      end;
      RememberSetings.IniFileName := INIFileName;
      RememberSetings.Restore;
@@ -928,6 +974,10 @@ begin
   // Additional Settings tab is the largest one.
   FConfig.Width:= FConfig.ChWindowsPosition.Width + FConfig.ChWindowsPosition.Left + FConfig.EAlphaBlend.Width;
   Fconfig.Height := FConfig.PTabs.Height - FConfig.PTImage.Height + FConfig.PHotKeys.Top + FConfig.PHotKeys.Height;
+  BStart.Height := BOpenINI.Height;
+  BStart.Width := Round(FConfig.Width / 2.2);
+  BRestart.Height := BOpenINI.Height;
+  BRestart.Width := BStart.Width;
 end;
 
 procedure TFConfig.BShowClockCaption;
@@ -939,10 +989,11 @@ begin
      Begin
         WhatToDo := RStrShow;
         LPClock.Caption :=   RStrInvisible;
+        if Assigned(FConsole) then FConsole.LPClock.Caption :=   RStrInvisible;
      end
   else
      WhatToDo := RStrHide;
-  if BClock.Checked then
+  if RGrTimerMode.ItemIndex = 2 then
      WindowContent := RStrClock
   else
      WindowContent := RStrTimer;
@@ -953,6 +1004,53 @@ procedure TFConfig.BShowClockChange(Sender: TObject);
 begin
   BShowClockCaption;
   FTimer.Visible := not FTimer.Visible;
+end;
+
+procedure TFConfig.BSmallerFontClick(Sender: TObject);
+var
+  fontSize: Integer;
+  i: Integer;
+begin
+  fontSize := GetFontData(FConfig.Font.Handle).Height;
+If FConfig.Font.Size < 6 then
+   FConfig.Font.Size := fontSize - 1
+else
+  begin
+  FConfig.Font.Size := FConfig.Font.Size - 1;
+  For i:=0 to ComponentCount-1 do
+  If Components[i] is TFloatSpinEdit then
+       (Components[i] as TFloatSpinEdit).Width := Round((Components[i] as TFloatSpinEdit).Width / 1.16);
+  end;
+ChangeFontSize (FConfig.Font.Size);
+end;
+
+procedure TFConfig.BBiggerFontClick(Sender: TObject);
+  var
+     fontSize: Integer;
+     i: Integer;
+  begin
+    fontSize := GetFontData(FConfig.Font.Handle).Height;
+  If FConfig.Font.Size < 6 then
+     FConfig.Font.Size := fontSize + 1
+  else
+    begin
+    FConfig.Font.Size := FConfig.Font.Size + 1;
+    For i:=0 to ComponentCount-1 do
+    If Components[i] is TFloatSpinEdit then
+         (Components[i] as TFloatSpinEdit).Width := Round((Components[i] as TFloatSpinEdit).Width  * 1.16);
+
+    end;
+   ChangeFontSize (FConfig.Font.Size);
+end;
+
+procedure TFConfig.ChangeFontSize (FontSize : Integer);
+begin
+  LLogoSection.Font.Size := FontSize;
+  LTimerWSection.Font.Size := FontSize;
+  LTimerSection.Font.Size := FontSize;
+  LTransparent.Font.Size := FontSize;
+  BChangeFont.Font.Size := FontSize;
+  SetFormSize;
 end;
 
 procedure TFConfig.BStartClick(Sender: TObject);

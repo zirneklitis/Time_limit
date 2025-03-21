@@ -1,6 +1,6 @@
 (*
- * Version: 00.09.13.
- * Author: Kārlis Kalviškis, 2024.06.27
+ * Version: 00.10.00.
+ * Author: Kārlis Kalviškis, 2025.03.16
  * License: GPLv3
  *)
 
@@ -112,10 +112,10 @@ implementation
 { TFTimer }
 
 (*
-  To use 'settings' and 'help' window's objects.
+  To use 'settings', 'console' and 'help' window's objects.
   Should be placed here not to run in circular refernce.
 *)
-uses settings, help;
+uses settings, help, console;
 
 procedure TFTimer.FormCreate(Sender: TObject);
 begin
@@ -170,21 +170,47 @@ end;
 procedure TFTimer.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
   );
 begin
+
+    // Chage the elapsed time with keyboard.
+    if ssShift in Shift then
+    begin
     case Key of
-       VK_UP, VK_LEFT: begin
-             if not FConfig.BClock.Checked then begin
+       VK_UP, VK_RIGHT: begin
+             if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
                  TimeNow := TimeNow + 60;
                  if TimeNow > DefTIME then TimeNow := DefTIME;
                end;
              end;
-       VK_DOWN, VK_RIGHT: begin
-             if not FConfig.BClock.Checked then begin
+       VK_DOWN, VK_LEFT: begin
+             if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
                  TimeNow := TimeNow - 60;
                  if TimeNow < 0 then TimeNow := 0;
                end;
              end;
-       VK_F1:  FConfig.ShowFHelp;
-       VK_F11: ChangeFullScreen;
+       end;
+    end
+    else
+    begin
+     case Key of
+   VK_UP, VK_RIGHT: begin
+          if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
+              TimeNow := TimeNow + 10;
+              if TimeNow > DefTIME then TimeNow := DefTIME;
+            end;
+          end;
+    VK_DOWN, VK_LEFT: begin
+          if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
+              TimeNow := TimeNow - 10;
+              if TimeNow < 0 then TimeNow := 0;
+            end;
+          end;
+    end;
+
+    end;
+
+   case Key of
+      VK_F1:  FConfig.ShowFHelp;
+      VK_F11: ChangeFullScreen;
   end;
   if  not RUNING then ShowTime (TimeNow);
 end;
@@ -202,16 +228,17 @@ begin
                  if not FConfig.ChDontCloseTimer.Checked then Application.Terminate;
              end;
        //[Space], [S]
-       #32, 's': if not FConfig.BClock.Checked then RUNING := not RUNING;
+       #32, 's': if FConfig.RGrTimerMode.ItemIndex <> 2 then RUNING := not RUNING;
        'r': ResetTimer;
        'f': ChangeFullScreen;
        'b': ChangeWindowsBorder;
        'h': FConfig.ShowFHelp;
        'm': FConfig.Show;
-       'c': FConfig.BClock.Checked := true;
-       'e': FConfig.BTimer.Checked := true;
-       'l': FConfig.BCountDown.Checked := true;
+       'c': FConfig.RGrTimerMode.ItemIndex := 2;
+       'e': FConfig.RGrTimerMode.ItemIndex := 1;
+       'l': FConfig.RGrTimerMode.ItemIndex := 0;
        't': FConfig.ChWindowsPosition.Checked := not FConfig.ChWindowsPosition.Checked;
+       'v': FConfig.BConsole.Click;
   end;
 end;
 
@@ -219,7 +246,7 @@ procedure TFTimer.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   case Button of
-       mbLeft: if not FConfig.BClock.Checked then RUNING := not RUNING;
+       mbLeft: if FConfig.RGrTimerMode.ItemIndex <> 2 then RUNING := not RUNING;
        mbRight: FConfig.Show;
        mbMiddle: ResetTimer;
   end;
@@ -242,8 +269,10 @@ end;
 
 procedure TFTimer.LClockMMouseWheelDown(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
+
+// Change the elapsed time with a mouse.
 begin
-  if not FConfig.BClock.Checked then begin
+  if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
     TimeNow := TimeNow - 60;
     if TimeNow < 0 then TimeNow := 0;
     if  not RUNING then ShowTime (TimeNow);
@@ -252,8 +281,10 @@ end;
 
 procedure TFTimer.LClockMMouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
+
+// Change the elapsed time with a mouse.
 begin
-  if not FConfig.BClock.Checked then begin
+  if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
     TimeNow := TimeNow + 60;
     if TimeNow > DefTIME then TimeNow := DefTIME;
     if  not RUNING then ShowTime (TimeNow);
@@ -262,8 +293,10 @@ end;
 
 procedure TFTimer.LClockSMouseWheelDown(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
+
+// Change the elapsed time with a mouse.
 begin
-  if not FConfig.BClock.Checked then begin
+  if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
     TimeNow := TimeNow - 10;
     if TimeNow < 0 then TimeNow := 0;
     if  not RUNING then ShowTime (TimeNow);
@@ -272,8 +305,10 @@ end;
 
 procedure TFTimer.LClockSMouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
+
+// Change the elapsed time with a mouse.
 begin
-  if not FConfig.BClock.Checked then begin
+  if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
     TimeNow := TimeNow + 10;
     if TimeNow > DefTIME then TimeNow := DefTIME;
     if  not RUNING then ShowTime (TimeNow);
@@ -294,7 +329,10 @@ var
    Hour, Minute, Second, MilliSecond: Word;
 
 begin
-  if FConfig.BClock.Checked then begin
+
+  // Current time.
+  if FConfig.RGrTimerMode.ItemIndex = 2 then
+    begin
      DecodeTime(Time, Hour, Minute, Second, MilliSecond);
      SProgressBar.Width := Round(PProgressBar.Width * 0.03);
      SProgressBar.Anchors := [akTop,akBottom];
@@ -308,11 +346,15 @@ begin
   end
   else begin
     SProgressBar.Left :=  0;
-    if FConfig.BCountDown.Checked then begin
+
+    // Time left.
+    if FConfig.RGrTimerMode.ItemIndex = 0 then begin
       SProgressBar.Anchors := [akTop,akBottom,akRight];
       SProgressBar.AnchorSide[akRight].Side := asrRight;
       SProgressBar.Width := round(TimeNow / DefTime * PProgressBar.Width);
       end
+
+    // Time elapsed.
     else Begin
       SProgressBar.Anchors := [akTop,akBottom,akLeft];
       SProgressBar.AnchorSide[akLeft].Side := asrLeft;
@@ -332,9 +374,10 @@ begin
           ResizeAlert;
           if FConfig.ChLaunch.Checked then begin
              CMDtoRun := TProcess.Create(nil);
-             CMDtoRun.CommandLine := FConfig.ECMDtoRun.Text;
+             CMDtoRun.Executable := FConfig.ECMDtoRun.Text;
+             CMDtoRun.Parameters.add(FConfig.ECMD_parameters.Text);
              CMDtoRun.Execute;
-             FreeAndNil(CMDtoRun);
+             CMDtoRun.Free;
           end;
           if FConfig.ChExit.Checked then Application.Terminate;
         end;
@@ -356,21 +399,37 @@ begin
     end
     else
         FConfig.BStart.State := cbUnchecked;
-    if FConfig.BCountDown.Checked then
+    if FConfig.RGrTimerMode.ItemIndex = 0 then
       ShowTime (TimeNow)
     else
       ShowTime (DefTIME - TimeNow);
   end;
   if FTimer.Visible then
     Begin
-      if LMessage.Visible then begin
+      if LMessage.Visible then
+        begin
          FConfig.LPClock.Caption :=  LMessage.Caption;
-      end else begin
+      end else
+      begin
          FConfig.LPClock.Caption := LClockM.Caption + LClock.Caption + LClockS.Caption;
       end;
       FConfig.LPClock.Font.Color := LClock.Font.Color;
       FConfig.PPClock.Color := FTimer.Color;
-    end;
+
+      // The Timer's small console.
+      if Assigned(FConsole) then
+        begin
+           if LMessage.Visible then
+            begin
+             FConsole.LPClock.Caption :=  LMessage.Caption;
+          end else
+          begin
+             FConsole.LPClock.Caption := LClockM.Caption + LClock.Caption + LClockS.Caption;
+          end;
+          FConsole.LPClock.Font.Color := LClock.Font.Color;
+          FConsole.PPClock.Color := FTimer.Color;
+        end;
+     end;
 end;
 
 procedure TFTimer.ChangeFullScreen;
@@ -413,6 +472,7 @@ end;
 
 procedure TFTimer.ResetTimer;
 begin
+  FTimer.RUNING := false;
   LTimeOver.Visible := False;
   LMessage.Visible := False;
   TimeNow := DefTIME;
@@ -420,13 +480,12 @@ begin
   LClock.AutoSize := true;
   LClock.Caption := ':';
   LClock.Font.Size := round(LClockM.Font.Size * 0.75);
-  if not FConfig.BClock.Checked then begin
+
+  // If the clock mode is not used.
+  if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
     SProgressBar.Width := PProgressBar.Width;
-    if  not Timer1.Enabled or not RUNING then begin
-        RUNING := false;
-        ChangeColor(ColourB0, ColourT0, FALSE);
-        ShowTime (TimeNow);
-    end;
+    ChangeColor(ColourB0, ColourT0, FALSE);
+    ShowTime (TimeNow);
   end;
   Timer1.Enabled := true;
 end;
@@ -533,7 +592,7 @@ begin
   LClockM.Font.Size := fontsize;
   LClockS.Font.Size := fontsize;
   LMessage.Font.Size := round(fontsize * 0.4);
-  if FConfig.BClock.Checked then ChangeColor (ColourB0, ColourT0, FALSE);
+  if FConfig.RGrTimerMode.ItemIndex = 2 then ChangeColor (ColourB0, ColourT0, FALSE);
 end;
 
 procedure TFTimer.LogoBottom;

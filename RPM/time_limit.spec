@@ -2,7 +2,7 @@ Name:           time_limit
 %define projectname Time_limit
 %define breed -no_debug
 %define debug_package %{nil}
-Version:        00.09.13
+Version:        00.10.02
 Release:        K01%{?dist}
 Summary:        A windowed/full-screen countdown timer.
 License:        GPLv3+
@@ -78,6 +78,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_datadir}/icons
 
 %changelog
+* Fri Mar 21 2025 Karlis Kalviskis <karlo@lu.lv> - 00.10.02 - K01
+- Update to 00.10.02
+
 * Mon Dec 20 2021 Karlis Kalviskis <karlo@lu.lv> - 00.09.06 - K01
 - Update to 00.09.06
 

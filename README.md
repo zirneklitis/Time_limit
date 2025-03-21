@@ -3,7 +3,7 @@
 Version:
 --------
 
-0.09.13
+0.10.00
 
 In short:
 ---------
@@ -44,13 +44,16 @@ Hotkey | Purpose
 [`b`] | Border-less on/off.
 [`F1`], [`h`] | This help.
 [`m`], Mouse right click | Menu window.
-[`Left`], [`Up`] | Increase time by 1 minute.
-[`Right`], [`Down`] | Decrease time by 1 minute.
+[`Right`], [`Up`] | Increase time by 10 seconds.
+[`Left`], [`Down`] | Decrease time by 10 seconds.
+[`Shift`]_[`Right`], [`Shift`]_[`Up`] | Increase time by 1 minute.
+[`Shift`]_[`Left`], [`Shift`]_[`Down`] | Decrease time by 1 minute.
 [`r`], Mouse middle click | reset timer.
 [`c`] | Clock mode.
 [`e`] | Elapsed time mode.
 [`l`] | Remaining time mode.
 [`t`] | Toggles „Always on top” and normal windows modes
+[`v`] | Opens the timer's minimal console window.
 
 - You can change current time with the mouse wheel as well.
 - By clicking on progress-bar, the timer mode is toggled.

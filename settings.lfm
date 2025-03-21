@@ -1,7 +1,7 @@
 object FConfig: TFConfig
-  Left = 517
+  Left = 608
   Height = 687
-  Top = 13
+  Top = 27
   Width = 346
   BorderStyle = bsDialog
   Caption = 'Settings'
@@ -11,7 +11,7 @@ object FConfig: TFConfig
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
-  SessionProperties = 'BChangeFont.Font;CCloseMe.Checked;ChDontCloseTimer.Checked;ChIncreasingFontSize.Checked;ChMinusTiming.Checked;ChNoBacground.Checked;ChShowLogo.Checked;ChStretchLogo.Checked;ChTransparent.Checked;ChWindowsBorders.Checked;EAlphaBlend.Value;EChangeEditSize.Value;EEndNote.Text;EIncreasingFontSize.Value;ELogoPlHorizontal.Value;ELogoPlVertical.Value;ELogoProportion.Value;EMinLogoHeight.Value;EMinutes.Value;EWarning1.Value;EWarning2.Value;EWarning3.Value;FontDialog1.Font;Left;OpenPictureDialog.FileName;RGrLogoPlacement.ItemIndex;SBHalf.ButtonColor;SBMain.ButtonColor;SBWarning1.ButtonColor;SBWarning2.ButtonColor;SBWarning3.ButtonColor;SLogoPlHorizontal.Value;SLogoPlVertical.Value;STHalf.ButtonColor;STMain.ButtonColor;STWarning1.ButtonColor;STWarning2.ButtonColor;STWarning3.ButtonColor;Top;Visible;ChFlashing2.Checked;ChFlashing3.Checked'
+  SessionProperties = 'BChangeFont.Font;CCloseMe.Checked;ChDontCloseTimer.Checked;ChFlashing2.Checked;ChFlashing3.Checked;ChIncreasingFontSize.Checked;ChMinusTiming.Checked;ChNoBacground.Checked;ChShowLogo.Checked;ChStretchLogo.Checked;ChTransparent.Checked;ChWindowsBorders.Checked;EAlphaBlend.Value;EChangeEditSize.Value;ECMDtoRun.Text;ECMD_parameters.Text;EEndNote.Text;EIncreasingFontSize.Value;ELogoPlHorizontal.Value;ELogoPlVertical.Value;ELogoProportion.Value;EMinLogoHeight.Value;EMinutes.Value;EWarning1.Value;EWarning2.Value;EWarning3.Value;FontDialog1.Font;Left;OpenPictureDialog.FileName;RGrLogoPlacement.ItemIndex;SBHalf.ButtonColor;SBMain.ButtonColor;SBWarning1.ButtonColor;SBWarning2.ButtonColor;SBWarning3.ButtonColor;SLogoPlHorizontal.Value;SLogoPlVertical.Value;STHalf.ButtonColor;STMain.ButtonColor;STWarning1.ButtonColor;STWarning2.ButtonColor;STWarning3.ButtonColor;Top;Visible;ChLaunch.Checked'
   ShowHint = True
   ShowInTaskBar = stNever
   LCLVersion = '2.2.6.0'
@@ -26,9 +26,9 @@ object FConfig: TFConfig
     Height = 687
     Top = 0
     Width = 346
-    ActivePage = PTBase
+    ActivePage = PTFiles
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     object PTBase: TTabSheet
       Caption = 'Appearance'
@@ -116,11 +116,12 @@ object FConfig: TFConfig
       end
       object LMinutes3: TLabel
         AnchorSideLeft.Control = PTBase
+        AnchorSideTop.Control = EWarning3
+        AnchorSideTop.Side = asrCenter
         Left = 0
         Height = 13
-        Top = 261
+        Top = 258
         Width = 74
-        Anchors = [akLeft]
         Caption = 'Last warning:'
         ParentColor = False
       end
@@ -158,14 +159,14 @@ object FConfig: TFConfig
       end
       object BChangeFont: TButton
         AnchorSideLeft.Control = PTBase
-        AnchorSideTop.Control = LMinutes3
+        AnchorSideTop.Control = ChFlashing3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = PTBase
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 29
         Hint = 'Change name not size'
-        Top = 298
+        Top = 326
         Width = 336
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
@@ -178,15 +179,14 @@ object FConfig: TFConfig
         AnchorSideTop.Control = LMinutes
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = SBMain
-        Left = 214
+        Left = 192
         Height = 30
         Hint = 'Time for Presenter. Use [Enter] to apply changes and reset timer.'
         Top = 21
-        Width = 57
+        Width = 79
         Alignment = taRightJustify
         Anchors = [akTop, akRight]
         BorderSpacing.Right = 7
-        DecimalPlaces = 1
         MaxValue = 999
         MinValue = 0.1
         OnEnter = EMinutesEnter
@@ -201,14 +201,13 @@ object FConfig: TFConfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EMinutes
         AnchorSideRight.Side = asrBottom
-        Left = 213
+        Left = 192
         Height = 30
         Hint = 'Minutes left'
         Top = 138
-        Width = 58
+        Width = 79
         Alignment = taRightJustify
         Anchors = [akTop, akRight]
-        DecimalPlaces = 1
         OnEnter = EWarning1Enter
         OnExit = EWarning1Exit
         OnKeyPress = EWarning1KeyPress
@@ -220,14 +219,13 @@ object FConfig: TFConfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EMinutes
         AnchorSideRight.Side = asrBottom
-        Left = 213
+        Left = 192
         Height = 30
         Hint = 'Minutes left'
         Top = 196
-        Width = 58
+        Width = 79
         Alignment = taRightJustify
         Anchors = [akTop, akRight]
-        DecimalPlaces = 1
         OnEnter = EWarning2Enter
         OnExit = EWarning2Exit
         OnKeyPress = EWarning2KeyPress
@@ -235,18 +233,17 @@ object FConfig: TFConfig
       end
       object EWarning3: TFloatSpinEdit
         AnchorSideLeft.Control = EMinutes
-        AnchorSideTop.Control = LMinutes3
-        AnchorSideTop.Side = asrCenter
+        AnchorSideTop.Control = ChFlashing2
+        AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = EMinutes
         AnchorSideRight.Side = asrBottom
-        Left = 214
+        Left = 192
         Height = 30
         Hint = 'Minutes left'
-        Top = 252
-        Width = 57
+        Top = 249
+        Width = 79
         Alignment = taRightJustify
         Anchors = [akTop, akRight]
-        DecimalPlaces = 1
         Increment = 0.5
         OnEnter = EWarning3Enter
         OnExit = EWarning3Exit
@@ -386,7 +383,7 @@ object FConfig: TFConfig
         AnchorSideTop.Side = asrCenter
         Left = 278
         Height = 23
-        Top = 256
+        Top = 253
         Width = 23
         BorderWidth = 2
         ButtonColorAutoSize = False
@@ -401,7 +398,7 @@ object FConfig: TFConfig
         AnchorSideTop.Side = asrCenter
         Left = 310
         Height = 23
-        Top = 256
+        Top = 253
         Width = 23
         BorderWidth = 2
         ButtonColorAutoSize = False
@@ -425,28 +422,28 @@ object FConfig: TFConfig
         TabOrder = 11
       end
       object ChFlashing2: TCheckBox
+        AnchorSideLeft.Control = EWarning2
         AnchorSideTop.Control = EWarning2
-        AnchorSideTop.Side = asrCenter
+        AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = EWarning2
-        Left = 133
+        Left = 192
         Height = 23
         Hint = 'Each second swaps the foreground colour with the background colour and vice verse.'
-        Top = 200
+        Top = 226
         Width = 80
-        Anchors = [akTop, akRight]
         Caption = 'Swapping'
         TabOrder = 3
       end
       object ChFlashing3: TCheckBox
+        AnchorSideLeft.Control = EWarning3
         AnchorSideTop.Control = EWarning3
-        AnchorSideTop.Side = asrCenter
+        AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = EWarning3
-        Left = 134
+        Left = 192
         Height = 23
         Hint = 'Each second swaps the foreground colour with the background colour and vice verse.'
-        Top = 256
+        Top = 279
         Width = 80
-        Anchors = [akTop, akRight]
         Caption = 'Swapping'
         TabOrder = 5
       end
@@ -463,23 +460,24 @@ object FConfig: TFConfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = BHotKeys
         Left = 0
-        Height = 172
+        Height = 167
         Top = 158
         Width = 336
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
-        ClientHeight = 172
+        ClientHeight = 167
         ClientWidth = 336
         ParentColor = False
         TabOrder = 1
         object ChTransparent: TCheckBox
           AnchorSideLeft.Control = PTransparent
-          AnchorSideTop.Control = PTransparent
+          AnchorSideTop.Control = LTimerWSection
+          AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
-          Top = 22
+          Top = 17
           Width = 67
-          BorderSpacing.Top = 21
+          BorderSpacing.Top = 3
           Caption = 'Opacity'
           OnChange = ChTransparentChange
           TabOrder = 0
@@ -494,13 +492,15 @@ object FConfig: TFConfig
           AnchorSideBottom.Side = asrBottom
           Left = 81
           Height = 13
-          Top = 52
+          Top = 47
           Width = 174
           Alignment = taCenter
           BorderSpacing.Top = 7
           BorderSpacing.Bottom = 7
           Caption = 'May not work on some systems!'
+          Font.Style = [fsItalic]
           ParentColor = False
+          ParentFont = False
         end
         object EAlphaBlend: TSpinEdit
           AnchorSideLeft.Control = ChTransparent
@@ -509,11 +509,11 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = PTransparent
           AnchorSideRight.Side = asrBottom
-          Left = 275
+          Left = 264
           Height = 30
           Hint = '255 means non-transparent'
-          Top = 18
-          Width = 60
+          Top = 13
+          Width = 71
           Anchors = [akTop, akRight]
           BorderSpacing.Left = 9
           Increment = 5
@@ -531,7 +531,7 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
-          Top = 72
+          Top = 67
           Width = 120
           Caption = 'Windows borders'
           Enabled = False
@@ -544,7 +544,7 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
-          Top = 118
+          Top = 113
           Width = 85
           Caption = 'Full screen'
           Enabled = False
@@ -560,7 +560,7 @@ object FConfig: TFConfig
           Top = 1
           Width = 109
           Caption = 'The timer window'
-          Font.Style = [fsBold, fsUnderline]
+          Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
@@ -570,7 +570,7 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
-          Top = 95
+          Top = 90
           Width = 128
           Caption = 'Show progress bar'
           OnChange = ChProgressBarChange
@@ -582,7 +582,7 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
-          Top = 141
+          Top = 136
           Width = 289
           BorderSpacing.Right = 3
           BorderSpacing.Bottom = 7
@@ -611,7 +611,7 @@ object FConfig: TFConfig
           AnchorSideTop.Control = EMinLogoHeight
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = EMinLogoHeight
-          Left = 159
+          Left = 148
           Height = 13
           Top = 136
           Width = 107
@@ -627,11 +627,11 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = PLogo
           AnchorSideRight.Side = asrBottom
-          Left = 275
+          Left = 264
           Height = 30
           Hint = 'The minimal height (in pixels) of the logo.  If the resized logo is lower, it is not shown.'
           Top = 127
-          Width = 60
+          Width = 71
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 3
           MaxValue = 99
@@ -683,7 +683,7 @@ object FConfig: TFConfig
           AnchorSideRight.Control = ELogoProportion
           AnchorSideBottom.Control = RGrLogoPlacement
           AnchorSideBottom.Side = asrBottom
-          Left = 175
+          Left = 164
           Height = 13
           Top = 111
           Width = 91
@@ -698,11 +698,11 @@ object FConfig: TFConfig
           AnchorSideRight.Side = asrBottom
           AnchorSideBottom.Control = RGrLogoPlacement
           AnchorSideBottom.Side = asrBottom
-          Left = 275
+          Left = 264
           Height = 30
           Hint = 'The proportional size of the logo.'
           Top = 94
-          Width = 60
+          Width = 71
           Anchors = [akRight, akBottom]
           DecimalPlaces = 1
           Increment = 0.3
@@ -722,7 +722,7 @@ object FConfig: TFConfig
           Height = 30
           Hint = 'Horizontal spacing'
           Top = 53
-          Width = 57
+          Width = 65
           BorderSpacing.Left = 9
           OnChange = ELogoPlHorizontalChange
           OnEnter = ELogoPlHorizontalEnter
@@ -735,11 +735,11 @@ object FConfig: TFConfig
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = ELogoPlHorizontal
           AnchorSideTop.Side = asrCenter
-          Left = 168
+          Left = 176
           Height = 30
           Hint = 'Vertical spacing'
           Top = 53
-          Width = 57
+          Width = 64
           BorderSpacing.Left = 9
           OnChange = ELogoPlVerticalChange
           OnEnter = ELogoPlVerticalEnter
@@ -752,7 +752,7 @@ object FConfig: TFConfig
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = ELogoPlVertical
           AnchorSideTop.Side = asrCenter
-          Left = 225
+          Left = 240
           Height = 13
           Hint = 'The border spacing (top or bottom)'
           Top = 62
@@ -765,7 +765,7 @@ object FConfig: TFConfig
           AnchorSideLeft.Side = asrCenter
           AnchorSideTop.Control = ELogoPlHorizontal
           AnchorSideTop.Side = asrBottom
-          Left = 126
+          Left = 130
           Height = 13
           Hint = 'The border spacing (left or right)'
           Top = 83
@@ -821,7 +821,7 @@ object FConfig: TFConfig
           Top = 1
           Width = 29
           Caption = 'Logo'
-          Font.Style = [fsBold, fsUnderline]
+          Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
@@ -865,12 +865,12 @@ object FConfig: TFConfig
         AnchorSideRight.Control = PTImage
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 158
-        Top = 330
+        Height = 180
+        Top = 325
         Width = 336
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
-        ClientHeight = 158
+        ClientHeight = 180
         ClientWidth = 336
         TabOrder = 2
         object ECMDtoRun: TFileNameEdit
@@ -882,14 +882,13 @@ object FConfig: TFConfig
           Left = 1
           Height = 30
           Hint = 'Command to execute at the end of the time.'
-          Top = 120
+          Top = 119
           Width = 334
           FilterIndex = 0
           HideDirectories = False
           ButtonWidth = 23
           NumGlyphs = 1
           Anchors = [akTop, akLeft, akRight]
-          BorderSpacing.Bottom = 7
           MaxLength = 0
           TabOrder = 6
           OnChange = ECMDtoRunChange
@@ -904,7 +903,7 @@ object FConfig: TFConfig
           Left = 67
           Height = 23
           Hint = 'When the time is over, closes the count-down timer.'
-          Top = 97
+          Top = 96
           Width = 46
           Caption = 'Exit'
           TabOrder = 5
@@ -916,7 +915,7 @@ object FConfig: TFConfig
           Left = 1
           Height = 23
           Hint = 'When the time is over, launches another application.'
-          Top = 97
+          Top = 96
           Width = 66
           Caption = 'Launch'
           Enabled = False
@@ -931,7 +930,7 @@ object FConfig: TFConfig
           Left = 1
           Height = 30
           Hint = 'The message to appear when the time limit is exceeded.'
-          Top = 60
+          Top = 59
           Width = 334
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Top = 3
@@ -948,7 +947,7 @@ object FConfig: TFConfig
           Left = 228
           Height = 23
           Hint = 'When the time is over, timer shows the exceeded time.'
-          Top = 39
+          Top = 38
           Width = 107
           Anchors = [akTop, akRight]
           Caption = 'Exceeded time'
@@ -960,7 +959,7 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 13
-          Top = 44
+          Top = 43
           Width = 102
           BorderSpacing.Top = 3
           Caption = 'The End message:'
@@ -971,11 +970,11 @@ object FConfig: TFConfig
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = PEndNote
           AnchorSideRight.Side = asrBottom
-          Left = 275
+          Left = 264
           Height = 30
           Hint = 'Starting size (%)'
-          Top = 14
-          Width = 60
+          Top = 13
+          Width = 71
           Anchors = [akTop, akRight]
           Increment = 5
           MinValue = 5
@@ -986,13 +985,14 @@ object FConfig: TFConfig
         end
         object ChIncreasingFontSize: TCheckBox
           AnchorSideLeft.Control = PEndNote
-          AnchorSideTop.Control = PEndNote
+          AnchorSideTop.Control = LTimerSection
+          AnchorSideTop.Side = asrBottom
           Left = 1
           Height = 23
           Hint = 'The decrease of time makes the size of numbers bigger.'
-          Top = 18
+          Top = 17
           Width = 133
-          BorderSpacing.Top = 17
+          BorderSpacing.Top = 3
           Caption = 'Increasing font size'
           OnChange = ChIncreasingFontSizeChange
           TabOrder = 0
@@ -1006,9 +1006,37 @@ object FConfig: TFConfig
           Top = 1
           Width = 120
           Caption = 'The timer operation'
-          Font.Style = [fsBold, fsUnderline]
+          Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+        end
+        object ECMD_parameters: TEdit
+          AnchorSideLeft.Control = LParameters
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = ECMDtoRun
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = PEndNote
+          AnchorSideRight.Side = asrBottom
+          Left = 72
+          Height = 30
+          Hint = 'Command-line parameters'
+          Top = 149
+          Width = 263
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 9
+          TabOrder = 7
+        end
+        object LParameters: TLabel
+          AnchorSideLeft.Control = PEndNote
+          AnchorSideTop.Control = ECMD_parameters
+          AnchorSideTop.Side = asrCenter
+          Left = 1
+          Height = 13
+          Hint = 'Command-line parameters'
+          Top = 158
+          Width = 62
+          Caption = 'Parameters'
+          ParentColor = False
         end
       end
       object PHotKeys: TPanel
@@ -1019,7 +1047,7 @@ object FConfig: TFConfig
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 31
-        Top = 488
+        Top = 505
         Width = 336
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
@@ -1056,7 +1084,7 @@ object FConfig: TFConfig
         Left = 0
         Height = 23
         Hint = 'Enable/disable [Esc] for closing the application'
-        Top = 29
+        Top = 34
         Width = 97
         BorderSpacing.Top = 9
         Caption = 'Disable [Esc]'
@@ -1069,13 +1097,14 @@ object FConfig: TFConfig
         AnchorSideBottom.Control = PTFiles
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 25
-        Top = 635
+        Height = 29
+        Top = 631
         Width = 336
         Anchors = [akLeft, akRight, akBottom]
+        AutoSize = True
         Caption = 'Quit the timer'
         OnClick = BQuitClick
-        TabOrder = 7
+        TabOrder = 6
       end
       object LChangeEditSize: TLabel
         AnchorSideLeft.Control = PTFiles
@@ -1083,9 +1112,9 @@ object FConfig: TFConfig
         Left = 0
         Height = 13
         Hint = 'When the number input is entered, it is magnified.'
-        Top = 7
+        Top = 12
         Width = 132
-        BorderSpacing.Top = 7
+        BorderSpacing.Top = 12
         Caption = 'Resize edit-box on enter'
         ParentColor = False
       end
@@ -1094,11 +1123,11 @@ object FConfig: TFConfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = PTFiles
         AnchorSideRight.Side = asrBottom
-        Left = 279
+        Left = 263
         Height = 30
         Hint = 'Pixels to add'
-        Top = -2
-        Width = 57
+        Top = 3
+        Width = 73
         Anchors = [akTop, akRight]
         MaxValue = 21
         MinValue = 6
@@ -1114,10 +1143,11 @@ object FConfig: TFConfig
         AnchorSideRight.Control = PTFiles
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 25
-        Top = 52
+        Height = 29
+        Top = 57
         Width = 336
         Anchors = [akTop, akLeft, akRight]
+        AutoSize = True
         Caption = 'Open configuration'
         OnClick = BOpenINIClick
         TabOrder = 2
@@ -1129,29 +1159,30 @@ object FConfig: TFConfig
         AnchorSideRight.Control = PTFiles
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 25
-        Top = 77
+        Height = 29
+        Top = 86
         Width = 336
         Anchors = [akTop, akLeft, akRight]
+        AutoSize = True
         Caption = 'Save configuration'
         OnClick = BSaveINIClick
         TabOrder = 3
       end
       object BShowClock: TToggleBox
         AnchorSideLeft.Control = PTFiles
-        AnchorSideTop.Control = GrConsole
+        AnchorSideTop.Control = BStart
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = PTFiles
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 29
-        Top = 244
+        Top = 172
         Width = 336
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
         Caption = 'Clock window'
         OnChange = BShowClockChange
-        TabOrder = 5
+        TabOrder = 4
       end
       object BAbout: TButton
         AnchorSideLeft.Control = PTFiles
@@ -1161,125 +1192,13 @@ object FConfig: TFConfig
         Left = 0
         Height = 29
         Hint = 'Technical and legal information'
-        Top = 606
+        Top = 602
         Width = 336
         Anchors = [akLeft, akRight, akBottom]
+        AutoSize = True
         Caption = 'About the timer'
         OnClick = BAboutClick
-        TabOrder = 6
-      end
-      object GrTimerMode: TGroupBox
-        AnchorSideLeft.Control = PTFiles
-        AnchorSideTop.Control = BSaveINI
-        AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = PTFiles
-        AnchorSideRight.Side = asrBottom
-        Left = 0
-        Height = 101
-        Top = 102
-        Width = 336
-        Anchors = [akTop, akLeft, akRight]
-        AutoSize = True
-        Caption = 'Modes'
-        ClientHeight = 87
-        ClientWidth = 334
-        TabOrder = 4
-        object BCountDown: TToggleBox
-          AnchorSideLeft.Control = GrTimerMode
-          AnchorSideTop.Control = GrTimerMode
-          AnchorSideRight.Control = GrTimerMode
-          AnchorSideRight.Side = asrBottom
-          Left = 0
-          Height = 29
-          Top = 0
-          Width = 334
-          Anchors = [akTop, akLeft, akRight]
-          AutoSize = True
-          Caption = 'Remaining time (MM:SS)'
-          Checked = True
-          OnClick = BCountDownClick
-          State = cbChecked
-          TabOrder = 0
-        end
-        object BTimer: TToggleBox
-          AnchorSideLeft.Control = GrTimerMode
-          AnchorSideTop.Control = BCountDown
-          AnchorSideTop.Side = asrBottom
-          AnchorSideRight.Control = GrTimerMode
-          AnchorSideRight.Side = asrBottom
-          Left = 0
-          Height = 29
-          Top = 29
-          Width = 334
-          Anchors = [akTop, akLeft, akRight]
-          AutoSize = True
-          Caption = 'Time elapsed (MM:SS)'
-          OnClick = BTimerClick
-          TabOrder = 1
-        end
-        object BClock: TToggleBox
-          AnchorSideLeft.Control = GrTimerMode
-          AnchorSideTop.Control = BTimer
-          AnchorSideTop.Side = asrBottom
-          AnchorSideRight.Control = GrTimerMode
-          AnchorSideRight.Side = asrBottom
-          Left = 0
-          Height = 29
-          Top = 58
-          Width = 334
-          Anchors = [akTop, akLeft, akRight]
-          AutoSize = True
-          Caption = 'Clock mode (HH:MM)'
-          OnClick = BClockClick
-          TabOrder = 2
-        end
-      end
-      object GrConsole: TGroupBox
-        AnchorSideLeft.Control = PTFiles
-        AnchorSideTop.Control = GrTimerMode
-        AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = PTFiles
-        AnchorSideRight.Side = asrBottom
-        Left = 0
-        Height = 41
-        Top = 203
-        Width = 336
-        Anchors = [akTop, akLeft, akRight]
-        AutoSize = True
-        ClientHeight = 39
-        ClientWidth = 334
-        TabOrder = 8
-        OnResize = GrConsoleResize
-        object BStart: TToggleBox
-          AnchorSideLeft.Control = GrConsole
-          Left = 7
-          Height = 25
-          Hint = 'Start / Stop the timer'
-          Top = 7
-          Width = 75
-          BorderSpacing.Left = 7
-          BorderSpacing.Top = 7
-          BorderSpacing.Bottom = 7
-          Caption = '▶ ||'
-          OnClick = BStartClick
-          TabOrder = 0
-        end
-        object BRestart: TButton
-          AnchorSideTop.Control = BStart
-          AnchorSideTop.Side = asrCenter
-          AnchorSideRight.Control = GrConsole
-          AnchorSideRight.Side = asrBottom
-          Left = 239
-          Height = 25
-          Hint = 'Reset the timer'
-          Top = 7
-          Width = 88
-          Anchors = [akTop, akRight]
-          BorderSpacing.Right = 7
-          Caption = '↻'
-          OnClick = BRestartClick
-          TabOrder = 1
-        end
+        TabOrder = 5
       end
       object PPClock: TPanel
         AnchorSideLeft.Control = PTFiles
@@ -1289,15 +1208,16 @@ object FConfig: TFConfig
         AnchorSideRight.Side = asrBottom
         Left = 3
         Height = 67
-        Top = 276
+        Top = 204
         Width = 330
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 3
         BorderSpacing.Top = 3
         BorderSpacing.Right = 3
+        BorderSpacing.Bottom = 3
         ClientHeight = 67
         ClientWidth = 330
-        TabOrder = 9
+        TabOrder = 7
         object LPClock: TLabel
           AnchorSideLeft.Control = PPClock
           AnchorSideTop.Control = PPClock
@@ -1306,7 +1226,7 @@ object FConfig: TFConfig
           AnchorSideBottom.Control = PPClock
           AnchorSideBottom.Side = asrBottom
           Left = 3
-          Height = 61
+          Height = 57
           Hint = 'The preview of clock''s digits. The font-face and size are system defaults. Only colour corresponds.'
           Top = 3
           Width = 323
@@ -1316,16 +1236,120 @@ object FConfig: TFConfig
           BorderSpacing.Left = 2
           BorderSpacing.Top = 2
           BorderSpacing.Right = 3
-          BorderSpacing.Bottom = 2
+          BorderSpacing.Bottom = 6
           Caption = '42'
           Font.Height = 51
           Font.Quality = fqCleartypeNatural
+          Layout = tlCenter
           ParentColor = False
           ParentFont = False
           OptimalFill = True
         end
       end
+      object BConsole: TButton
+        AnchorSideLeft.Control = PTFiles
+        AnchorSideTop.Control = PPClock
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PPClock
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 29
+        Top = 274
+        Width = 333
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = True
+        Caption = 'Switch to the smaller timer'' s console'
+        OnClick = BConsoleClick
+        TabOrder = 8
+      end
+      object RGrTimerMode: TRadioGroup
+        AnchorSideLeft.Control = PTFiles
+        AnchorSideTop.Control = BSaveINI
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PTFiles
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 14
+        Top = 115
+        Width = 336
+        Anchors = [akTop, akLeft, akRight]
+        AutoFill = True
+        AutoSize = True
+        Caption = 'Modes'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        OnClick = RGrTimerModeClick
+        TabOrder = 9
+      end
+      object BStart: TToggleBox
+        AnchorSideLeft.Control = PTFiles
+        AnchorSideTop.Control = RGrTimerMode
+        AnchorSideTop.Side = asrBottom
+        Left = 7
+        Height = 29
+        Hint = 'Start / Stop the timer'
+        Top = 136
+        Width = 35
+        BorderSpacing.Left = 7
+        BorderSpacing.Top = 7
+        BorderSpacing.Bottom = 7
+        Caption = '▶ ||'
+        OnClick = BStartClick
+        TabOrder = 10
+      end
+      object BRestart: TButton
+        AnchorSideTop.Control = RGrTimerMode
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PTFiles
+        AnchorSideRight.Side = asrBottom
+        Left = 304
+        Height = 29
+        Hint = 'Stop and reset the timer'
+        Top = 136
+        Width = 25
+        Anchors = [akTop, akRight]
+        BorderSpacing.Top = 7
+        BorderSpacing.Right = 7
+        BorderSpacing.Bottom = 7
+        Caption = '↻'
+        OnClick = BRestartClick
+        TabOrder = 11
+      end
     end
+  end
+  object BSmallerFont: TButton
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = BBiggerFont
+    Left = 298
+    Height = 29
+    Hint = 'Smaller fonts for the settings window'
+    Top = 0
+    Width = 24
+    Anchors = [akTop, akRight]
+    AutoSize = True
+    Caption = '▼'
+    OnClick = BSmallerFontClick
+    TabOrder = 1
+  end
+  object BBiggerFont: TButton
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 322
+    Height = 29
+    Hint = 'Bigger fonts for the settings window'
+    Top = 0
+    Width = 24
+    Anchors = [akTop, akRight]
+    AutoSize = True
+    Caption = '▲'
+    OnClick = BBiggerFontClick
+    TabOrder = 2
   end
   object ColorDialog: TColorDialog
     Color = clBlack
@@ -1351,8 +1375,8 @@ object FConfig: TFConfig
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    Left = 144
-    Top = 515
+    Left = 24
+    Top = 592
   end
   object FontDialog: TFontDialog
     Title = 'Select a font (the size is ignored)'
@@ -1360,28 +1384,28 @@ object FConfig: TFConfig
     MaxFontSize = 0
     Options = [fdEffects, fdNoSizeSel]
     PreviewText = '42:00'
-    Left = 32
-    Top = 515
+    Left = 16
+    Top = 552
   end
   object OpenPictureDialog: TOpenPictureDialog
     Title = 'Open an image as the logo'
-    Left = 232
-    Top = 515
+    Left = 152
+    Top = 552
   end
   object RememberSetings: TIniPropStorage
     StoredValues = <>
     OnRestoreProperties = BSettingsARClick
-    Left = 32
-    Top = 567
+    Left = 88
+    Top = 592
   end
   object OpenFile: TOpenDialog
     Title = 'Open the configuration file'
-    Left = 144
-    Top = 567
+    Left = 280
+    Top = 552
   end
   object SaveFile: TSaveDialog
     Title = 'Save the current configuration'
-    Left = 232
-    Top = 569
+    Left = 216
+    Top = 592
   end
 end

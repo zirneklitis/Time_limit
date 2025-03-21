@@ -1,3 +1,13 @@
+00.10.02
+	TProcess.CommandLine replaced with TProcess.Executable and
+		TProcess.Parameters.add().
+
+00.10.00
+	Resetting the timer, stops it as well.
+	Added possibility to change the font size of the Settings window.
+	Added smaller timer's console.
+	Added and changed hot-keys.
+
 00.09.13
 	Now the adjusting of clock numbers to screen scaling should work.
 

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-11-22 06:24+0200\n"
+"PO-Revision-Date: 2025-03-21 03:52+0200\n"
 "Last-Translator: Kārlis Kalviškis <karlo@lu.lv>\n"
 "Language-Team: karlo\n"
 "Language: lv\n"
@@ -13,7 +13,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: console.rstclocktime
+msgctxt "console.rstclocktime"
+msgid "Clock mode (HH:MM)"
+msgstr "Parasts pulkstenis (St.:Min.)"
+
+#: console.rstelapsedtime
+msgctxt "console.rstelapsedtime"
+msgid "Time elapsed (MM:SS)"
+msgstr "Iztērētais laiks (Min.:Sek.)"
+
+#: console.rstremainingtime
+msgctxt "console.rstremainingtime"
+msgid "Remaining time (MM:SS)"
+msgstr "Atlikušais laiks (Min.:Sek.)"
 
 #: help.binfo01
 msgid "Built for"
@@ -91,21 +106,41 @@ msgstr "[m], peles „labā” poga"
 msgid "settings and control window (menu)."
 msgstr "pulksteņa vadība un iestatījumi."
 
-#: help.hkey08a
-msgid "[Left], [Up]"
-msgstr "[Pa_kreisi], [Uz_augšu]"
+#: help.hkey08am
+msgctxt "help.hkey08am"
+msgid "[Right], [Up]"
+msgstr "[Pa_labi], [Uz_augšu]"
 
-#: help.hkey08b
+#: help.hkey08as
+msgid "[Shift]_[Right], [Shift]_[Up]"
+msgstr "[Pārbīde]_[Pa_labi], [Pārbīde]_[Uz_augšu]"
+
+#: help.hkey08bm
+msgctxt "help.hkey08bm"
 msgid "increase time by 1 minute."
 msgstr "palielināt laiku par 1 minūti."
 
-#: help.hkey09a
-msgid "[Right], [Down]"
-msgstr "[Pa_labi], [Uz_leju]"
+#: help.hkey08bs
+msgid "increase time by 10 seconds."
+msgstr "palielināt laiku par 10 sekundēm."
 
-#: help.hkey09b
+#: help.hkey09am
+msgctxt "help.hkey09am"
+msgid "[Left], [Down]"
+msgstr "[Pa_kreisi], [Uz_leju]"
+
+#: help.hkey09as
+msgid "[Shift]_[Left], [Shift]_[Down]"
+msgstr "[Pārbīde]_[Pa_kreiso], [Pārbīde]_[Uz_leju]"
+
+#: help.hkey09bm
+msgctxt "help.hkey09bm"
 msgid "decrease time by 1 minute."
 msgstr "samazināt laiku par 1 minūti."
+
+#: help.hkey09bs
+msgid "decrease time by 10 seconds."
+msgstr "samazināt laiku par 10 sekundēm."
 
 #: help.hkey10b
 msgid "You can change current time with the mouse wheel as well."
@@ -151,6 +186,14 @@ msgstr "[t]"
 msgid "toggles overlapping of clock’s window."
 msgstr "maina to, vai pulksteņa logs nosedz citus logus."
 
+#: help.hkey16a
+msgid "[v]"
+msgstr "[v]"
+
+#: help.hkey16b
+msgid "opens the timer's minimal console window."
+msgstr "atver laika atskaites mazo vadības logu."
+
 #: help.logosorce
 msgid "Sorce of the logo:"
 msgstr "Programmā iekļautā logo autors:"
@@ -193,6 +236,18 @@ msgstr "Lietotne „%0:s” ir izveidota „%1:s” izstrādes vidē."
 msgid "A good starting point was “%0:s” forum and wiki pages."
 msgstr "Labs atspēriena punkts bija „%0:s” forums un wiki lapas."
 
+#: settings.rstclocktime
+#, fuzzy
+msgctxt "settings.rstclocktime"
+msgid "Clock mode (HH:MM)"
+msgstr "Parasts pulkstenis (St.:Min.)"
+
+#: settings.rstelapsedtime
+#, fuzzy
+msgctxt "settings.rstelapsedtime"
+msgid "Time elapsed (MM:SS)"
+msgstr "Iztērētais laiks (Min.:Sek.)"
+
 #: settings.rstovewrite
 msgid "Ovewrite"
 msgstr "Pārrakstīt"
@@ -220,6 +275,12 @@ msgstr "Izvēlies ciparu krāsu"
 #: settings.rstrconfigfilter
 msgid "Configuration files|*.ini|All files|*.*"
 msgstr "Iestatījumu datnes|*.ini|Visas datnes|*.*"
+
+#: settings.rstremainingtime
+#, fuzzy
+msgctxt "settings.rstremainingtime"
+msgid "Remaining time (MM:SS)"
+msgstr "Atlikušais laiks (Min.:Sek.)"
 
 #: settings.rstrfileexists
 #, object-pascal-format
@@ -272,6 +333,14 @@ msgstr "Par programmu"
 msgid "Technical and legal information"
 msgstr "Uzziņas par programmu un tās izmantošanu"
 
+#: tfconfig.bbiggerfont.caption
+msgid "▲"
+msgstr "▲"
+
+#: tfconfig.bbiggerfont.hint
+msgid "Bigger fonts for the settings window"
+msgstr "Palielināt iestatījuma loga tekstu izmērus"
+
 #: tfconfig.bchangefont.caption
 msgid "Change font"
 msgstr "Nomainīt fontu"
@@ -288,13 +357,10 @@ msgstr "Nomaini logo"
 msgid "Browse for a new image"
 msgstr "Sameklē jaunu attēlu"
 
-#: tfconfig.bclock.caption
-msgid "Clock mode (HH:MM)"
-msgstr "Parasts pulkstenis (St.:Min.)"
-
-#: tfconfig.bcountdown.caption
-msgid "Remaining time (MM:SS)"
-msgstr "Atlikušais laiks (Min.:Sek.)"
+#: tfconfig.bconsole.caption
+msgctxt "tfconfig.bconsole.caption"
+msgid "Switch to the smaller timer' s console"
+msgstr "Pārslēgties uz mazo vadības logu"
 
 #: tfconfig.bhotkeys.caption
 msgid "List hot-keys"
@@ -309,12 +375,14 @@ msgid "Quit the timer"
 msgstr "Aizvērt pulksteni"
 
 #: tfconfig.brestart.caption
+msgctxt "tfconfig.brestart.caption"
 msgid "↻"
 msgstr "↻"
 
 #: tfconfig.brestart.hint
-msgid "Reset the timer"
-msgstr "Atlikt uz sākumu"
+msgctxt "tfconfig.brestart.hint"
+msgid "Stop and reset the timer"
+msgstr "Apturēt un atlikt uz sākumu"
 
 #: tfconfig.brestorelogo.caption
 msgid "Restore"
@@ -345,20 +413,27 @@ msgid "Apply, reset and restart"
 msgstr "Izmainīt un sākt atskaiti"
 
 #: tfconfig.bshowclock.caption
+msgctxt "tfconfig.bshowclock.caption"
 msgid "Clock window"
 msgstr "Laika logs"
 
+#: tfconfig.bsmallerfont.caption
+msgid "▼"
+msgstr "▼"
+
+#: tfconfig.bsmallerfont.hint
+msgid "Smaller fonts for the settings window"
+msgstr "Samazināt iestatījuma loga tekstu izmērus"
+
 #: tfconfig.bstart.caption
+msgctxt "tfconfig.bstart.caption"
 msgid "▶ ||"
 msgstr "▶ ||"
 
 #: tfconfig.bstart.hint
+msgctxt "tfconfig.bstart.hint"
 msgid "Start / Stop the timer"
 msgstr "Sākt / apstādināt laika atskaiti"
-
-#: tfconfig.btimer.caption
-msgid "Time elapsed (MM:SS)"
-msgstr "Iztērētais laiks (Min.:Sek.)"
 
 #: tfconfig.caption
 msgid "Settings"
@@ -480,6 +555,11 @@ msgstr "Par cik pikseļiem palielināt"
 msgid "Command to execute at the end of the time."
 msgstr "Komanda, kas jāizpilda, kad beidzas atvēlētais laiks."
 
+#: tfconfig.ecmd_parameters.hint
+msgctxt "tfconfig.ecmd_parameters.hint"
+msgid "Command-line parameters"
+msgstr "Programmas parametri"
+
 #: tfconfig.eendnote.hint
 msgid "The message to appear when the time limit is exceeded."
 msgstr "Paziņojums, kuru parāda, kad pārsniegts atvēlētais laiks."
@@ -510,6 +590,7 @@ msgid "The minimal height (in pixels) of the logo.  If the resized logo is lower
 msgstr "Mazākais pieļaujamais logo augstums pikseļos. Ja samazinātais logo ir mazāks, tas netiek rādīts."
 
 #: tfconfig.eminutes.hint
+msgctxt "tfconfig.eminutes.hint"
 msgid "Time for Presenter. Use [Enter] to apply changes and reset timer."
 msgstr "Atvēlētais laiks. Lieto [Ievad]-taustiņu, lai pielietotu izmaiņas un palaistu laika atskaiti."
 
@@ -531,10 +612,6 @@ msgstr "Minūtes līdz beigām"
 #: tfconfig.fontdialog.title
 msgid "Select a font (the size is ignored)"
 msgstr "Izvēlies fontu (izmērs netiek ņemts vērā)"
-
-#: tfconfig.grtimermode.caption
-msgid "Modes"
-msgstr "Ko rādīt"
 
 #: tfconfig.lchangeeditsize.caption
 msgid "Resize edit-box on enter"
@@ -596,12 +673,22 @@ msgstr "3. brīdinājums:"
 msgid "Halftime:"
 msgstr "Puse no laika:"
 
+#: tfconfig.lparameters.caption
+msgid "Parameters"
+msgstr "Parametri"
+
+#: tfconfig.lparameters.hint
+msgctxt "tfconfig.lparameters.hint"
+msgid "Command-line parameters"
+msgstr "Programmas parametri"
+
 #: tfconfig.lpclock.caption
 msgctxt "tfconfig.lpclock.caption"
 msgid "42"
 msgstr "42"
 
 #: tfconfig.lpclock.hint
+msgctxt "tfconfig.lpclock.hint"
 msgid "The preview of clock's digits. The font-face and size are system defaults. Only colour corresponds."
 msgstr "Laika atskaites logā redzamie simboli. Tiek izmantoti sistēmas piedāvātie fonti. Atbilst tikai krāsa."
 
@@ -641,9 +728,69 @@ msgstr "Papildus"
 msgid "The placement of the logo"
 msgstr "Logo novietojums"
 
+#: tfconfig.rgrtimermode.caption
+msgctxt "tfconfig.rgrtimermode.caption"
+msgid "Modes"
+msgstr "Ko rādīt"
+
 #: tfconfig.savefile.title
 msgid "Save the current configuration"
 msgstr "Saglabāt patreizējos iestatījumus datnē"
+
+#: tfconsole.bconfig.caption
+msgctxt "tfconsole.bconfig.caption"
+msgid "All settings"
+msgstr "Visi iestatījumi"
+
+#: tfconsole.bconfig.hint
+msgctxt "tfconsole.bconfig.hint"
+msgid "Switch to the full setting' s window"
+msgstr "Pārslēgties uz iestatījumu un vadības logu"
+
+#: tfconsole.brestart.caption
+msgctxt "tfconsole.brestart.caption"
+msgid "↻"
+msgstr "↻"
+
+#: tfconsole.brestart.hint
+msgctxt "tfconsole.brestart.hint"
+msgid "Stop and reset the timer"
+msgstr "Apturēt un atlikt uz sākumu"
+
+#: tfconsole.bshowclock.caption
+msgctxt "tfconsole.bshowclock.caption"
+msgid "Clock window"
+msgstr "Laika logs"
+
+#: tfconsole.bstart.caption
+msgctxt "tfconsole.bstart.caption"
+msgid "▶ ||"
+msgstr "▶ ||"
+
+#: tfconsole.bstart.hint
+msgctxt "tfconsole.bstart.hint"
+msgid "Start / Stop the timer"
+msgstr "Sākt / apstādināt laika atskaiti"
+
+#: tfconsole.caption
+msgctxt "tfconsole.caption"
+msgid "The timer's console"
+msgstr "Laika atskaites vadības logs"
+
+#: tfconsole.eminutes.hint
+msgctxt "tfconsole.eminutes.hint"
+msgid "Time for Presenter. Use [Enter] to apply changes and reset timer."
+msgstr "Atvēlētais laiks. Lieto [Ievad]-taustiņu, lai pielietotu izmaiņas un palaistu laika atskaiti."
+
+#: tfconsole.lpclock.caption
+msgctxt "tfconsole.lpclock.caption"
+msgid "42"
+msgstr "42"
+
+#: tfconsole.lpclock.hint
+msgctxt "tfconsole.lpclock.hint"
+msgid "The preview of clock's digits. The font-face and size are system defaults. Only colour corresponds."
+msgstr "Laika atskaites logā redzamie simboli. Tiek izmantoti sistēmas piedāvātie fonti. Atbilst tikai krāsa."
 
 #: tfhelp.caption
 msgid "Help"

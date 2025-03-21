@@ -1,0 +1,13 @@
+{"version":1,"strings":[
+{"hash":25566197,"name":"tfconsole.caption","sourcebytes":[84,104,101,32,116,105,109,101,114,39,115,32,99,111,110,115,111,108,101],"value":"The timer's console"},
+{"hash":57689602,"name":"tfconsole.bstart.hint","sourcebytes":[83,116,97,114,116,32,47,32,83,116,111,112,32,116,104,101,32,116,105,109,101,114],"value":"Start / Stop the timer"},
+{"hash":247564348,"name":"tfconsole.bstart.caption","sourcebytes":[226,150,182,32,124,124],"value":"\u25B6 ||"},
+{"hash":223454082,"name":"tfconsole.brestart.hint","sourcebytes":[83,116,111,112,32,97,110,100,32,114,101,115,101,116,32,116,104,101,32,116,105,109,101,114],"value":"Stop and reset the timer"},
+{"hash":60187,"name":"tfconsole.brestart.caption","sourcebytes":[226,134,187],"value":"\u21BB"},
+{"hash":58528951,"name":"tfconsole.bshowclock.caption","sourcebytes":[67,108,111,99,107,32,119,105,110,100,111,119],"value":"Clock window"},
+{"hash":87286174,"name":"tfconsole.lpclock.hint","sourcebytes":[84,104,101,32,112,114,101,118,105,101,119,32,111,102,32,99,108,111,99,107,39,115,32,100,105,103,105,116,115,46,32,84,104,101,32,102,111,110,116,45,102,97,99,101,32,97,110,100,32,115,105,122,101,32,97,114,101,32,115,121,115,116,101,109,32,100,101,102,97,117,108,116,115,46,32,79,110,108,121,32,99,111,108,111,117,114,32,99,111,114,114,101,115,112,111,110,100,115,46],"value":"The preview of clock's digits. The font-face and size are system defaults. Only colour corresponds."},
+{"hash":882,"name":"tfconsole.lpclock.caption","sourcebytes":[52,50],"value":"42"},
+{"hash":105763463,"name":"tfconsole.bconfig.hint","sourcebytes":[83,119,105,116,99,104,32,116,111,32,116,104,101,32,102,117,108,108,32,115,101,116,116,105,110,103,39,32,115,32,119,105,110,100,111,119],"value":"Switch to the full setting' s window"},
+{"hash":137896819,"name":"tfconsole.bconfig.caption","sourcebytes":[65,108,108,32,115,101,116,116,105,110,103,115],"value":"All settings"},
+{"hash":91902638,"name":"tfconsole.eminutes.hint","sourcebytes":[84,105,109,101,32,102,111,114,32,80,114,101,115,101,110,116,101,114,46,32,85,115,101,32,91,69,110,116,101,114,93,32,116,111,32,97,112,112,108,121,32,99,104,97,110,103,101,115,32,97,110,100,32,114,101,115,101,116,32,116,105,109,101,114,46],"value":"Time for Presenter. Use [Enter] to apply changes and reset timer."}
+]}

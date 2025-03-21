@@ -19,7 +19,7 @@ uses
   DefaultTranslator, //to enable translation
   Interfaces, // this includes the LCL widgetset
   fileinfo, Forms, runtimetypeinfocontrols,
-  basewindow, settings, help;
+  basewindow, settings, help, console;
 {$R *.res}
 
 (*
@@ -42,17 +42,18 @@ resourcestring
   RstLang = 'Set the interface language (nn is the language code).';
   RstPause = 'Hit [Enter] to continue ...';
   RstClock = 'Start as an ordinary digital clock.';
+
 var
   ConfigurationFile: String;
   StartCounter: Boolean;
   AllParameters: Integer;
   CmdToRun: String;
   ExitCounter: Boolean;
-  ClockMode: Boolean;
+  ClockMode: Integer;
 begin
   ExitCounter := false;
   StartCounter := false;
-  ClockMode := false;
+  ClockMode := -1;
   Application.Scaled:=True;
   If ParamCount > 0 then begin
        AllParameters := ParamCount;
@@ -79,7 +80,7 @@ begin
          AllParameters := AllParameters - 2;
         end;
        if Application.HasOption('clock') then begin
-         ClockMode := true;
+         ClockMode := 2;
          Dec(AllParameters);
         end;
        if (AllParameters > 0) or Application.HasOption('h', 'help') then begin
@@ -137,7 +138,8 @@ begin
     end;
     FConfig.ChExit.Checked := ExitCounter;
     FTimer.RUNING := StartCounter;
-    FConfig.BClock.Checked := ClockMode;
+    FConfig.RGrTimerMode.ItemIndex := ClockMode;
+  Application.CreateForm(TFConsole, FConsole);
     Application.Run;
 end.
 

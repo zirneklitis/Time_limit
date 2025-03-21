@@ -1,7 +1,7 @@
 object FTimer: TFTimer
-  Left = 16
+  Left = 461
   Height = 242
-  Top = 12
+  Top = 141
   Width = 494
   ActiveControl = PProgressBar
   AlphaBlendValue = 125
@@ -9,6 +9,7 @@ object FTimer: TFTimer
   Caption = 'Countdown Timer'
   ClientHeight = 242
   ClientWidth = 494
+  Color = clNone
   Constraints.MinHeight = 44
   Constraints.MinWidth = 99
   FormStyle = fsSystemStayOnTop

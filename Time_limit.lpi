@@ -26,8 +26,8 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <MinorVersionNr Value="9"/>
-      <RevisionNr Value="13"/>
+      <MinorVersionNr Value="10"/>
+      <RevisionNr Value="2"/>
       <Language Value="0809"/>
       <StringTable Comments="A windowed/full-screen countdown timer." FileDescription="A countdown timer." LegalCopyright="Kārlis Kalviškis, GPLv3" LegalTrademarks="Kārlis Kalviškis  &lt;eko@lanet.lv>" OriginalFilename="Time_limit" ProductName="Time limit (Countdown timer)" ProductVersion="Слава Україні!"/>
     </VersionInfo>
@@ -54,7 +54,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="Time_limit.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -90,6 +90,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="console.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FConsole"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

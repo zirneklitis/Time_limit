@@ -1,6 +1,21 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: console.rstclocktime
+msgctxt "console.rstclocktime"
+msgid "Clock mode (HH:MM)"
+msgstr ""
+
+#: console.rstelapsedtime
+msgctxt "console.rstelapsedtime"
+msgid "Time elapsed (MM:SS)"
+msgstr ""
+
+#: console.rstremainingtime
+msgctxt "console.rstremainingtime"
+msgid "Remaining time (MM:SS)"
+msgstr ""
+
 #: help.binfo01
 msgid "Built for"
 msgstr ""
@@ -77,20 +92,40 @@ msgstr ""
 msgid "settings and control window (menu)."
 msgstr ""
 
-#: help.hkey08a
-msgid "[Left], [Up]"
+#: help.hkey08am
+msgctxt "help.hkey08am"
+msgid "[Right], [Up]"
 msgstr ""
 
-#: help.hkey08b
+#: help.hkey08as
+msgid "[Shift]_[Right], [Shift]_[Up]"
+msgstr ""
+
+#: help.hkey08bm
+msgctxt "help.hkey08bm"
 msgid "increase time by 1 minute."
 msgstr ""
 
-#: help.hkey09a
-msgid "[Right], [Down]"
+#: help.hkey08bs
+msgid "increase time by 10 seconds."
 msgstr ""
 
-#: help.hkey09b
+#: help.hkey09am
+msgctxt "help.hkey09am"
+msgid "[Left], [Down]"
+msgstr ""
+
+#: help.hkey09as
+msgid "[Shift]_[Left], [Shift]_[Down]"
+msgstr ""
+
+#: help.hkey09bm
+msgctxt "help.hkey09bm"
 msgid "decrease time by 1 minute."
+msgstr ""
+
+#: help.hkey09bs
+msgid "decrease time by 10 seconds."
 msgstr ""
 
 #: help.hkey10b
@@ -137,6 +172,14 @@ msgstr ""
 msgid "toggles overlapping of clock’s window."
 msgstr ""
 
+#: help.hkey16a
+msgid "[v]"
+msgstr ""
+
+#: help.hkey16b
+msgid "opens the timer's minimal console window."
+msgstr ""
+
 #: help.logosorce
 msgid "Sorce of the logo:"
 msgstr ""
@@ -179,6 +222,16 @@ msgstr ""
 msgid "A good starting point was “%0:s” forum and wiki pages."
 msgstr ""
 
+#: settings.rstclocktime
+msgctxt "settings.rstclocktime"
+msgid "Clock mode (HH:MM)"
+msgstr ""
+
+#: settings.rstelapsedtime
+msgctxt "settings.rstelapsedtime"
+msgid "Time elapsed (MM:SS)"
+msgstr ""
+
 #: settings.rstovewrite
 msgid "Ovewrite"
 msgstr ""
@@ -205,6 +258,11 @@ msgstr ""
 
 #: settings.rstrconfigfilter
 msgid "Configuration files|*.ini|All files|*.*"
+msgstr ""
+
+#: settings.rstremainingtime
+msgctxt "settings.rstremainingtime"
+msgid "Remaining time (MM:SS)"
 msgstr ""
 
 #: settings.rstrfileexists
@@ -258,6 +316,14 @@ msgstr ""
 msgid "Technical and legal information"
 msgstr ""
 
+#: tfconfig.bbiggerfont.caption
+msgid "▲"
+msgstr ""
+
+#: tfconfig.bbiggerfont.hint
+msgid "Bigger fonts for the settings window"
+msgstr ""
+
 #: tfconfig.bchangefont.caption
 msgid "Change font"
 msgstr ""
@@ -274,12 +340,9 @@ msgstr ""
 msgid "Browse for a new image"
 msgstr ""
 
-#: tfconfig.bclock.caption
-msgid "Clock mode (HH:MM)"
-msgstr ""
-
-#: tfconfig.bcountdown.caption
-msgid "Remaining time (MM:SS)"
+#: tfconfig.bconsole.caption
+msgctxt "tfconfig.bconsole.caption"
+msgid "Switch to the smaller timer' s console"
 msgstr ""
 
 #: tfconfig.bhotkeys.caption
@@ -295,11 +358,13 @@ msgid "Quit the timer"
 msgstr ""
 
 #: tfconfig.brestart.caption
+msgctxt "tfconfig.brestart.caption"
 msgid "↻"
 msgstr ""
 
 #: tfconfig.brestart.hint
-msgid "Reset the timer"
+msgctxt "tfconfig.brestart.hint"
+msgid "Stop and reset the timer"
 msgstr ""
 
 #: tfconfig.brestorelogo.caption
@@ -331,19 +396,26 @@ msgid "Apply, reset and restart"
 msgstr ""
 
 #: tfconfig.bshowclock.caption
+msgctxt "tfconfig.bshowclock.caption"
 msgid "Clock window"
 msgstr ""
 
+#: tfconfig.bsmallerfont.caption
+msgid "▼"
+msgstr ""
+
+#: tfconfig.bsmallerfont.hint
+msgid "Smaller fonts for the settings window"
+msgstr ""
+
 #: tfconfig.bstart.caption
+msgctxt "tfconfig.bstart.caption"
 msgid "▶ ||"
 msgstr ""
 
 #: tfconfig.bstart.hint
+msgctxt "tfconfig.bstart.hint"
 msgid "Start / Stop the timer"
-msgstr ""
-
-#: tfconfig.btimer.caption
-msgid "Time elapsed (MM:SS)"
 msgstr ""
 
 #: tfconfig.caption
@@ -466,6 +538,11 @@ msgstr ""
 msgid "Command to execute at the end of the time."
 msgstr ""
 
+#: tfconfig.ecmd_parameters.hint
+msgctxt "tfconfig.ecmd_parameters.hint"
+msgid "Command-line parameters"
+msgstr ""
+
 #: tfconfig.eendnote.hint
 msgid "The message to appear when the time limit is exceeded."
 msgstr ""
@@ -496,6 +573,7 @@ msgid "The minimal height (in pixels) of the logo.  If the resized logo is lower
 msgstr ""
 
 #: tfconfig.eminutes.hint
+msgctxt "tfconfig.eminutes.hint"
 msgid "Time for Presenter. Use [Enter] to apply changes and reset timer."
 msgstr ""
 
@@ -516,10 +594,6 @@ msgstr ""
 
 #: tfconfig.fontdialog.title
 msgid "Select a font (the size is ignored)"
-msgstr ""
-
-#: tfconfig.grtimermode.caption
-msgid "Modes"
 msgstr ""
 
 #: tfconfig.lchangeeditsize.caption
@@ -582,12 +656,22 @@ msgstr ""
 msgid "Halftime:"
 msgstr ""
 
+#: tfconfig.lparameters.caption
+msgid "Parameters"
+msgstr ""
+
+#: tfconfig.lparameters.hint
+msgctxt "tfconfig.lparameters.hint"
+msgid "Command-line parameters"
+msgstr ""
+
 #: tfconfig.lpclock.caption
 msgctxt "tfconfig.lpclock.caption"
 msgid "42"
 msgstr ""
 
 #: tfconfig.lpclock.hint
+msgctxt "tfconfig.lpclock.hint"
 msgid "The preview of clock's digits. The font-face and size are system defaults. Only colour corresponds."
 msgstr ""
 
@@ -627,8 +711,68 @@ msgstr ""
 msgid "The placement of the logo"
 msgstr ""
 
+#: tfconfig.rgrtimermode.caption
+msgctxt "tfconfig.rgrtimermode.caption"
+msgid "Modes"
+msgstr ""
+
 #: tfconfig.savefile.title
 msgid "Save the current configuration"
+msgstr ""
+
+#: tfconsole.bconfig.caption
+msgctxt "tfconsole.bconfig.caption"
+msgid "All settings"
+msgstr ""
+
+#: tfconsole.bconfig.hint
+msgctxt "tfconsole.bconfig.hint"
+msgid "Switch to the full setting' s window"
+msgstr ""
+
+#: tfconsole.brestart.caption
+msgctxt "tfconsole.brestart.caption"
+msgid "↻"
+msgstr ""
+
+#: tfconsole.brestart.hint
+msgctxt "tfconsole.brestart.hint"
+msgid "Stop and reset the timer"
+msgstr ""
+
+#: tfconsole.bshowclock.caption
+msgctxt "tfconsole.bshowclock.caption"
+msgid "Clock window"
+msgstr ""
+
+#: tfconsole.bstart.caption
+msgctxt "tfconsole.bstart.caption"
+msgid "▶ ||"
+msgstr ""
+
+#: tfconsole.bstart.hint
+msgctxt "tfconsole.bstart.hint"
+msgid "Start / Stop the timer"
+msgstr ""
+
+#: tfconsole.caption
+msgctxt "tfconsole.caption"
+msgid "The timer's console"
+msgstr ""
+
+#: tfconsole.eminutes.hint
+msgctxt "tfconsole.eminutes.hint"
+msgid "Time for Presenter. Use [Enter] to apply changes and reset timer."
+msgstr ""
+
+#: tfconsole.lpclock.caption
+msgctxt "tfconsole.lpclock.caption"
+msgid "42"
+msgstr ""
+
+#: tfconsole.lpclock.hint
+msgctxt "tfconsole.lpclock.hint"
+msgid "The preview of clock's digits. The font-face and size are system defaults. Only colour corresponds."
 msgstr ""
 
 #: tfhelp.caption

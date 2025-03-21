@@ -1,6 +1,6 @@
 (*
- * Version: 00.09.11.
- * Author: Kārlis Kalviškis, 2022.11.22
+ * Version: 00.10.00.
+ * Author: Kārlis Kalviškis, 2025.03.16
  * License: GPLv3
  *)
 
@@ -74,10 +74,14 @@ resourcestring
   HKey06B = 'this help.';
   HKey07A = '[m], Mouse right click';
   HKey07B = 'settings and control window (menu).';
-  HKey08A = '[Left], [Up]';
-  HKey08B = 'increase time by 1 minute.';
-  HKey09A = '[Right], [Down]';
-  HKey09B = 'decrease time by 1 minute.';
+  HKey08AS = '[Shift]_[Right], [Shift]_[Up]';
+  HKey08BS = 'increase time by 10 seconds.';
+  HKey09AS = '[Shift]_[Left], [Shift]_[Down]';
+  HKey09BS = 'decrease time by 10 seconds.';
+  HKey08AM = '[Right], [Up]';
+  HKey08BM = 'increase time by 1 minute.';
+  HKey09AM = '[Left], [Down]';
+  HKey09BM = 'decrease time by 1 minute.';
   HKey10B = 'You can change current time with the mouse wheel as well.';
   HKey11A = '[r], Mouse middle click';
   HKey11B = 'reset timer.';
@@ -89,6 +93,8 @@ resourcestring
   HKey14B = 'clock mode.';
   HKey15A = '[t]';
   HKey15B = 'toggles overlapping of clock’s window.';
+  HKey16A = '[v]';
+  HKey16B = 'opens the timer' +#39+ 's minimal console window.';
   SInfo01 = 'Product name';
   SInfo02 = 'Original filename';
   SInfo03 = 'File version';
@@ -123,9 +129,13 @@ begin
   ShowHotKey(html_head
         + '<I><B>' + HKey00A + '</B><BR>' + HKey01A + '</I>'
         + CreateHTMLTable(
-        TStringArray.Create(HKey02A, HKey03A, HKey04A, HKey05A, HKey06A, HKey07A, HKey08A, HKey09A, '', HKey11A, HKey12A, HKey13A, HKey14A, HKey15A)
+        TStringArray.Create(HKey02A, HKey03A, HKey04A, HKey05A, HKey06A, HKey07A,
+        HKey08AS, HKey09AS, HKey08AM, HKey09AM,'', HKey11A, HKey12A, HKey13A,
+        HKey14A, HKey15A, HKey16A)
         ,
-        TStringArray.Create(HKey02B, HKey03B, HKey04B, HKey05B, HKey06B, HKey07B, HKey08B, HKey09B, HKey10B, HKey11B, HKey12B, HKey13B, HKey14B, HKey15B)
+        TStringArray.Create(HKey02B, HKey03B, HKey04B, HKey05B, HKey06B, HKey07B,
+        HKey08BS, HKey09BS, HKey08BM, HKey09BM, HKey10B, HKey11B, HKey12B, HKey13B,
+        HKey14B, HKey15B, HKey16B)
         , '<B><TT>', '</TT></B>', '', '')
         + '<HR><P><I>' + CommandlineOptions + '</I><BR><TT>'
         + Application.Params[0] + '&nbsp;--help</TT></P>'
