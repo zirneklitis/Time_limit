@@ -1,6 +1,6 @@
 (*
- * Version: 00.10.00.
- * Author: Kārlis Kalviškis, 2025.03.16
+ * Version: 00.10.03.
+ * Author: Kārlis Kalviškis, 2025.03.23
  * License: GPLv3
  *)
 
@@ -72,6 +72,7 @@ type
     ECMDtoRun: TFileNameEdit;
     FontDialog: TFontDialog;
     GrTimerMode: TGroupBox;
+    LFontName: TLabel;
     LParameters: TLabel;
     LPClock: TLabel;
     LTimerSection: TLabel;
@@ -86,7 +87,6 @@ type
     OpenFile: TOpenDialog;
     PHotKeys: TPanel;
     RememberSetings: TIniPropStorage;
-    LChangeEditSize: TLabel;
     LEndNote: TLabel;
     LTransparent: TLabel;
     LLogoHeight: TLabel;
@@ -155,32 +155,13 @@ type
    procedure ChWindowsBordersChange(Sender: TObject);
    procedure ChWindowsPositionChange(Sender: TObject);
    procedure EAlphaBlendChange(Sender: TObject);
-   procedure EAlphaBlendEnter(Sender: TObject);
-   procedure EAlphaBlendExit(Sender: TObject);
-   procedure EChangeEditSizeEnter(Sender: TObject);
-   procedure EChangeEditSizeExit(Sender: TObject);
    procedure ECMDtoRunChange(Sender: TObject);
    procedure EEndNoteChange(Sender: TObject);
-   procedure EIncreasingFontSizeEnter(Sender: TObject);
-   procedure EIncreasingFontSizeExit(Sender: TObject);
    procedure ELogoProportionChange(Sender: TObject);
-   procedure ELogoProportionEnter(Sender: TObject);
-   procedure ELogoProportionExit(Sender: TObject);
    procedure EMinLogoHeightChange(Sender: TObject);
-   procedure EMinLogoHeightEnter(Sender: TObject);
-   procedure EMinLogoHeightExit(Sender: TObject);
-   procedure EMinutesEnter(Sender: TObject);
-   procedure EMinutesExit(Sender: TObject);
    procedure EMinutesKeyPress(Sender: TObject; var Key: char);
-   procedure EWarning1Enter(Sender: TObject);
-   procedure EWarning1Exit(Sender: TObject);
    procedure EWarning1KeyPress(Sender: TObject; var Key: char);
-   procedure EWarning2Enter(Sender: TObject);
-   procedure EWarning2Exit(Sender: TObject);
    procedure EWarning2KeyPress(Sender: TObject; var Key: char);
-   procedure EWarning3Enter(Sender: TObject);
-   procedure EWarning3Exit(Sender: TObject);
-   procedure ECMDtoRunEditingDone(Sender: TObject);
    procedure EWarning3KeyPress(Sender: TObject; var Key: char);
    procedure FormActivate(Sender: TObject);
    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -194,11 +175,7 @@ type
    procedure SBWarning2Click(Sender: TObject);
    procedure SBWarning3Click(Sender: TObject);
    procedure ELogoPlHorizontalChange(Sender: TObject);
-   procedure ELogoPlHorizontalEnter(Sender: TObject);
-   procedure ELogoPlHorizontalExit(Sender: TObject);
    procedure ELogoPlVerticalChange(Sender: TObject);
-   procedure ELogoPlVerticalEnter(Sender: TObject);
-   procedure ELogoPlVerticalExit(Sender: TObject);
    procedure STHalfClick(Sender: TObject);
    procedure STMainClick(Sender: TObject);
    procedure STWarning1Click(Sender: TObject);
@@ -212,11 +189,6 @@ type
    procedure SetFormSize;
    procedure ChangeMode;
    procedure ChangeFontSize (FontSize : Integer);
-  private
-   procedure ResizeField(Sender: TCustomFloatSpinEdit);
-   procedure deResizeField(Sender: TCustomFloatSpinEdit);
-  public
-   BiggerFont : Integer;
 end;
 
 
@@ -262,9 +234,6 @@ resourcestring
 
 procedure TFConfig.FormCreate(Sender: TObject);
 begin
-    BiggerFont := 16;
-    EChangeEditSize.Value := BiggerFont;
-
     EMinutes.Value  := FTimer.DefTIME / 60;
     EWarning1.Value  := FTimer.Warning1 / 60;
     EWarning2.Value  := FTimer.Warning2 / 60;
@@ -292,10 +261,12 @@ begin
     STWarning2.Hint := RStrTextColourHint;
     SBWarning3.Hint := RStrBackgroudColourHint;
     STWarning3.Hint := RStrTextColourHint;
-    RGrTimerMode.Items.Add(RstRemainingTime);
-    RGrTimerMode.Items.Add(RstElapsedTime);
-    RGrTimerMode.Items.Add(RstClockTime);
-    RGrTimerMode.ItemIndex := 1;
+    with RGrTimerMode do
+    begin
+      Items.Add(RstRemainingTime);
+      Items.Add(RstElapsedTime);
+      Items.Add(RstClockTime);
+    end;
 
     BShowClockCaption;
 
@@ -433,15 +404,6 @@ begin
   end;
 end;
 
-procedure TFConfig.ELogoPlHorizontalEnter(Sender: TObject);
-begin
-  ResizeField (ELogoPlHorizontal)
-end;
-
-procedure TFConfig.ELogoPlHorizontalExit(Sender: TObject);
-begin
-  deResizeField(ELogoPlHorizontal)
-end;
 
 procedure TFConfig.ELogoPlVerticalChange(Sender: TObject);
 begin
@@ -451,15 +413,6 @@ begin
     FTimer.ResizeLogo;
 end;
 
-procedure TFConfig.ELogoPlVerticalEnter(Sender: TObject);
-begin
-  ResizeField(ELogoPlVertical)
-end;
-
-procedure TFConfig.ELogoPlVerticalExit(Sender: TObject);
-begin
-  deResizeField(ELogoPlVertical)
-end;
 
 procedure TFConfig.STHalfClick(Sender: TObject);
 begin
@@ -550,26 +503,6 @@ begin
   Ftimer.AlphaBlendValue := EAlphaBlend.Value;
 end;
 
-procedure TFConfig.EAlphaBlendEnter(Sender: TObject);
-begin
-  ResizeField(EAlphaBlend);
-end;
-
-procedure TFConfig.EAlphaBlendExit(Sender: TObject);
-begin
-  deResizeField(EAlphaBlend);
-end;
-
-procedure TFConfig.EChangeEditSizeEnter(Sender: TObject);
-begin
-  ResizeField(EChangeEditSize);
-end;
-
-procedure TFConfig.EChangeEditSizeExit(Sender: TObject);
-begin
-  deResizeField(EChangeEditSize);
-  BiggerFont := EChangeEditSize.Value;
-end;
 
 procedure TFConfig.ECMDtoRunChange(Sender: TObject);
 begin
@@ -589,30 +522,11 @@ begin
 end;
 
 
-procedure TFConfig.EIncreasingFontSizeEnter(Sender: TObject);
-begin
-  ResizeField(EIncreasingFontSize);
-end;
-
-procedure TFConfig.EIncreasingFontSizeExit(Sender: TObject);
-begin
-  deResizeField(EIncreasingFontSize);
-end;
-
 procedure TFConfig.ELogoProportionChange(Sender: TObject);
 begin
   FTimer.ResizeLogo;
 end;
 
-procedure TFConfig.ELogoProportionEnter(Sender: TObject);
-begin
-  ResizeField(ELogoProportion);
-end;
-
-procedure TFConfig.ELogoProportionExit(Sender: TObject);
-begin
-  deResizeField(ELogoProportion);
-end;
 
 procedure TFConfig.EMinLogoHeightChange(Sender: TObject);
 begin
@@ -620,25 +534,6 @@ begin
   FTimer.CheckLogoVisibility;
 end;
 
-procedure TFConfig.EMinLogoHeightEnter(Sender: TObject);
-begin
-  ResizeField(EMinLogoHeight);
-end;
-
-procedure TFConfig.EMinLogoHeightExit(Sender: TObject);
-begin
-  deResizeField(EMinLogoHeight);
-end;
-
-procedure TFConfig.EMinutesEnter(Sender: TObject);
-begin
-    ResizeField(EMinutes);
-end;
-
-procedure TFConfig.EMinutesExit(Sender: TObject);
-begin
-  deResizeField(EMinutes);
-end;
 
 procedure TFConfig.EMinutesKeyPress(Sender: TObject; var Key: char);
 begin
@@ -649,15 +544,6 @@ begin
      end;
 end;
 
-procedure TFConfig.EWarning1Enter(Sender: TObject);
-begin
-  ResizeField(EWarning1);
-end;
-
-procedure TFConfig.EWarning1Exit(Sender: TObject);
-begin
-  deResizeField(EWarning1);
-end;
 
 procedure TFConfig.EWarning1KeyPress(Sender: TObject; var Key: char);
 begin
@@ -672,15 +558,6 @@ begin
 
 end;
 
-procedure TFConfig.EWarning2Enter(Sender: TObject);
-begin
-  ResizeField(EWarning2);
-end;
-
-procedure TFConfig.EWarning2Exit(Sender: TObject);
-begin
-  deResizeField(EWarning2);
-end;
 
 procedure TFConfig.EWarning2KeyPress(Sender: TObject; var Key: char);
 begin
@@ -694,20 +571,6 @@ begin
   end;
 end;
 
-procedure TFConfig.EWarning3Enter(Sender: TObject);
-begin
-  ResizeField(EWarning3);
-end;
-
-procedure TFConfig.EWarning3Exit(Sender: TObject);
-begin
-  deResizeField(EWarning3);
-end;
-
-procedure TFConfig.ECMDtoRunEditingDone(Sender: TObject);
-begin
-
-end;
 
 procedure TFConfig.EWarning3KeyPress(Sender: TObject; var Key: char);
 begin
@@ -886,23 +749,6 @@ begin
   FTimer.ResetTimer;
 end;
 
-procedure TFConfig.ResizeField(Sender: TCustomFloatSpinEdit);
-var
-  Me : TCustomFloatSpinEdit;
-begin
-  Me := Sender;
-  Me.Width := Me.Width + 3 * FConfig.BiggerFont;
-  Me.Font.Size := Me.Font.Size + FConfig.BiggerFont;
-end;
-
-procedure TFConfig.deResizeField(Sender: TCustomFloatSpinEdit);
-var
-  Me : TCustomFloatSpinEdit;
-begin
-  Me := Sender;
-  Me.Width := Me.Width - 3 * FConfig.BiggerFont;
-  Me.Font.Size := Me.Font.Size - FConfig.BiggerFont;
-end;
 
 procedure TFConfig.LoadIcon (IconFile: String);
 begin
@@ -1011,9 +857,10 @@ var
   fontSize: Integer;
   i: Integer;
 begin
-  fontSize := GetFontData(FConfig.Font.Handle).Height;
+  fontSize :=
+  Round((GetFontData(FConfig.Font.Handle).Height * 72 / FConfig.Font.PixelsPerInch));
 If FConfig.Font.Size < 6 then
-   FConfig.Font.Size := fontSize - 1
+   FConfig.Font.Size := fontSize
 else
   begin
   FConfig.Font.Size := FConfig.Font.Size - 1;
@@ -1029,7 +876,8 @@ procedure TFConfig.BBiggerFontClick(Sender: TObject);
      fontSize: Integer;
      i: Integer;
   begin
-    fontSize := GetFontData(FConfig.Font.Handle).Height;
+    fontSize :=
+    Round((GetFontData(FConfig.Font.Handle).Height * 72 / FConfig.Font.PixelsPerInch));
   If FConfig.Font.Size < 6 then
      FConfig.Font.Size := fontSize + 1
   else

@@ -64,11 +64,14 @@ Available command-line parameters:
 Parameter | Purpose
 --- | ---
 `--config=`file.ini | Read the specified configuration file.
-`-s` or `--start` | Starts the countdown.
-`--run=`command | At the end of countdown launches another program.
 `-e` or `--exit` | Exit at the end of countdown.
-`-l` nn or `--lang` nn |Set the interface language (nn is the language code).
 `-h` or `--help` | Show command-line help.
+`--hotkey` | Start with opened hot-key table.
+`-l` nn or `--lang` nn |Set the interface language (nn is the language code).
+`--run=`command | At the end of countdown launches another program.
+`--runwith=parameters` | Parameters for the program to launch.
+`-s` or `--start` | Starts the countdown.
+`--time=`minutes | Time limit (minutes).
 
 Availability:
 -------------

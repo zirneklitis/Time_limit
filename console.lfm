@@ -1,7 +1,7 @@
 object FConsole: TFConsole
   Left = 963
   Height = 260
-  Top = 237
+  Top = 145
   Width = 327
   Caption = 'The timer''s console'
   ClientHeight = 260
@@ -166,8 +166,6 @@ object FConsole: TFConsole
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 1
-    ClientWidth = 325
     OnClick = RGrTimerModeClick
     TabOrder = 6
   end

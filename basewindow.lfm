@@ -1,7 +1,7 @@
 object FTimer: TFTimer
-  Left = 461
+  Left = 636
   Height = 242
-  Top = 141
+  Top = 254
   Width = 494
   ActiveControl = PProgressBar
   AlphaBlendValue = 125

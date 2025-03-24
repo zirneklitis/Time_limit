@@ -1,6 +1,6 @@
 (*
- * Version: 00.10.00.
- * Author: Kārlis Kalviškis, 2025.03.16
+ * Version: 00.10.03.
+ * Author: Kārlis Kalviškis, 2025.03.21
  * License: GPLv3
  *)
 
@@ -159,6 +159,7 @@ begin
   MThanks.Append('   http://wiki.freepascal.org/Main_Page');
   MThanks.Append(SpecialThanks);
   MThanks.Append('   * Mike Thompson - mike.cornflake@gmail.com');
+  MThanks.Append('   * Baiba Dirnēna (testing)');
   MThanks.Append(LogoSorce);
   MThanks.Append('   -');
   MThanks.Append('         -');

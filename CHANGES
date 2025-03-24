@@ -1,3 +1,7 @@
+00.10.03
+	Removed feature: SpinEdit-box is not resized on enterieng the field.
+	Added command line parameters: --hotkey, --runwith, --time.
+
 00.10.02
 	TProcess.CommandLine replaced with TProcess.Executable and
 		TProcess.Parameters.add().

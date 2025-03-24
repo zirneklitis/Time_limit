@@ -547,10 +547,6 @@ msgstr "Pulksteņa logs vienmēr pārklāj citus logus"
 msgid "255 means non-transparent"
 msgstr "Pilnīgi necaurspīdīgs ir ar vērtību 255"
 
-#: tfconfig.echangeeditsize.hint
-msgid "Pixels to add"
-msgstr "Par cik pikseļiem palielināt"
-
 #: tfconfig.ecmdtorun.hint
 msgid "Command to execute at the end of the time."
 msgstr "Komanda, kas jāizpilda, kad beidzas atvēlētais laiks."
@@ -613,17 +609,13 @@ msgstr "Minūtes līdz beigām"
 msgid "Select a font (the size is ignored)"
 msgstr "Izvēlies fontu (izmērs netiek ņemts vērā)"
 
-#: tfconfig.lchangeeditsize.caption
-msgid "Resize edit-box on enter"
-msgstr "Palielināt skaitļu laukus"
-
-#: tfconfig.lchangeeditsize.hint
-msgid "When the number input is entered, it is magnified."
-msgstr "Labojot skaitļu laukus, palielinās ciparu izmērs."
-
 #: tfconfig.lendnote.caption
 msgid "The End message:"
 msgstr "Beigu paziņojums:"
+
+#: tfconfig.lfontname.caption
+msgid "Font size:"
+msgstr ""
 
 #: tfconfig.llogoharrow.caption
 msgid "↔"
@@ -843,6 +835,10 @@ msgstr "Sākot rādīt parastu pulksteni."
 msgid "Exit at the end of countdown."
 msgstr "Kad laiks iztecējis, aizvērt šo programmu."
 
+#: timelimit.rsthotkey
+msgid "Start with opened hot-key table."
+msgstr ""
+
 #: timelimit.rstlang
 msgid "Set the interface language (nn is the language code)."
 msgstr "Saskarnes valoda (nn – valodas kods)."
@@ -867,10 +863,19 @@ msgstr "Ielasa uzrādīto iestatījumu datni."
 msgid "At the end of countdown launches another program."
 msgstr "Kad laiks iztecējis, palaist citu programmu."
 
+#: timelimit.rstrunparameters
+msgid "Parameters for the program to launch."
+msgstr ""
+
 #: timelimit.rststart
 msgid "Starts the countdown."
 msgstr "Palaižot programmu, sākt laika atskaiti."
 
+#: timelimit.rsttime
+msgid "Time limit (minutes)."
+msgstr ""
+
 #: timelimit.rstusage
 msgid "Usage"
 msgstr "Lietošana"
+

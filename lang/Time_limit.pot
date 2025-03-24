@@ -530,10 +530,6 @@ msgstr ""
 msgid "255 means non-transparent"
 msgstr ""
 
-#: tfconfig.echangeeditsize.hint
-msgid "Pixels to add"
-msgstr ""
-
 #: tfconfig.ecmdtorun.hint
 msgid "Command to execute at the end of the time."
 msgstr ""
@@ -596,16 +592,12 @@ msgstr ""
 msgid "Select a font (the size is ignored)"
 msgstr ""
 
-#: tfconfig.lchangeeditsize.caption
-msgid "Resize edit-box on enter"
-msgstr ""
-
-#: tfconfig.lchangeeditsize.hint
-msgid "When the number input is entered, it is magnified."
-msgstr ""
-
 #: tfconfig.lendnote.caption
 msgid "The End message:"
+msgstr ""
+
+#: tfconfig.lfontname.caption
+msgid "Font size:"
 msgstr ""
 
 #: tfconfig.llogoharrow.caption
@@ -826,6 +818,10 @@ msgstr ""
 msgid "Exit at the end of countdown."
 msgstr ""
 
+#: timelimit.rsthotkey
+msgid "Start with opened hot-key table."
+msgstr ""
+
 #: timelimit.rstlang
 msgid "Set the interface language (nn is the language code)."
 msgstr ""
@@ -850,8 +846,16 @@ msgstr ""
 msgid "At the end of countdown launches another program."
 msgstr ""
 
+#: timelimit.rstrunparameters
+msgid "Parameters for the program to launch."
+msgstr ""
+
 #: timelimit.rststart
 msgid "Starts the countdown."
+msgstr ""
+
+#: timelimit.rsttime
+msgid "Time limit (minutes)."
 msgstr ""
 
 #: timelimit.rstusage

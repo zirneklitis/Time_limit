@@ -1,6 +1,6 @@
 (*
- * Version: 00.10.00.
- * Author: Kārlis Kalviškis, 2025.03.16
+ * Version: 00.10.03.
+ * Author: Kārlis Kalviškis, 2025.03.23
  * License: GPLv3
  *)
 
@@ -159,7 +159,6 @@ begin
   Warning1 := 180;
   Warning2 := 120;
   Warning3 := 60;
-  RUNING := false;
 end;
 
 procedure TFTimer.FormDblClick(Sender: TObject);
@@ -489,6 +488,7 @@ begin
   end;
   Timer1.Enabled := true;
 end;
+
 procedure TFTimer.ResizeAlert;
 begin
   if LTimeOver.Visible then begin
