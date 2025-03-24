@@ -3,7 +3,7 @@
 Version:
 --------
 
-0.10.00
+0.10.03
 
 In short:
 ---------
@@ -69,7 +69,7 @@ Parameter | Purpose
 `--hotkey` | Start with opened hot-key table.
 `-l` nn or `--lang` nn |Set the interface language (nn is the language code).
 `--run=`command | At the end of countdown launches another program.
-`--runwith=parameters` | Parameters for the program to launch.
+`--runwith=`parameters | Parameters for the program to launch.
 `-s` or `--start` | Starts the countdown.
 `--time=`minutes | Time limit (minutes).
 
