@@ -10,7 +10,7 @@ object FHelp: TFHelp
   Constraints.MinWidth = 180
   FormStyle = fsStayOnTop
   OnCreate = FormCreate
-  SessionProperties = 'Height;Left;Top;Width;Visible'
+  SessionProperties = 'Height;Left;Top;Width'
   ShowInTaskBar = stNever
   LCLVersion = '2.2.6.0'
   object PHelp: TPageControl

@@ -174,13 +174,13 @@ begin
     if ssShift in Shift then
     begin
     case Key of
-       VK_UP, VK_RIGHT: begin
+       VK_DOWN, VK_LEFT: begin
              if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
                  TimeNow := TimeNow + 60;
                  if TimeNow > DefTIME then TimeNow := DefTIME;
                end;
              end;
-       VK_DOWN, VK_LEFT: begin
+       VK_UP, VK_RIGHT: begin
              if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
                  TimeNow := TimeNow - 60;
                  if TimeNow < 0 then TimeNow := 0;
@@ -191,13 +191,13 @@ begin
     else
     begin
      case Key of
-   VK_UP, VK_RIGHT: begin
+   VK_DOWN, VK_LEFT: begin
           if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
               TimeNow := TimeNow + 10;
               if TimeNow > DefTIME then TimeNow := DefTIME;
             end;
           end;
-    VK_DOWN, VK_LEFT: begin
+   VK_UP, VK_RIGHT: begin
           if FConfig.RGrTimerMode.ItemIndex <> 2 then begin
               TimeNow := TimeNow - 10;
               if TimeNow < 0 then TimeNow := 0;
@@ -583,7 +583,7 @@ begin
       fontsize := round(Width / (4 * dpi_ratio))
   else
       fontsize := round(Height / (2 * dpi_ratio));
-  if FConfig.ChIncreasingFontSize.Checked and not FConfig.BClock.Checked then
+  if FConfig.ChIncreasingFontSize.Checked and (FConfig.RGrTimerMode.ItemIndex <> 2) then
       fontsize := round(fontsize / 100 *
          (FConfig.EIncreasingFontSize.Value +
           (100 - FConfig.EIncreasingFontSize.Value) *
@@ -605,10 +605,11 @@ end;
 
 procedure TFTimer.ToggleMode;
 begin
-  if FConfig.BTimer.Checked then
-    FConfig.BCountDown.Checked:=true
-  else
-    FConfig.BTimer.Checked:=true;
+  Case FConfig.RGrTimerMode.ItemIndex of
+       0:   FConfig.RGrTimerMode.ItemIndex := 1;
+       1:   FConfig.RGrTimerMode.ItemIndex := 2;
+       else FConfig.RGrTimerMode.ItemIndex := 0;
+  end;
 end;
 
 procedure TFTimer.BackgroundVisibility;

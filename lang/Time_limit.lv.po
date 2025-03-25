@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-03-21 03:52+0200\n"
+"PO-Revision-Date: 2025-03-25 02:45+0200\n"
 "Last-Translator: Kārlis Kalviškis <karlo@lu.lv>\n"
 "Language-Team: karlo\n"
 "Language: lv\n"
@@ -237,13 +237,11 @@ msgid "A good starting point was “%0:s” forum and wiki pages."
 msgstr "Labs atspēriena punkts bija „%0:s” forums un wiki lapas."
 
 #: settings.rstclocktime
-#, fuzzy
 msgctxt "settings.rstclocktime"
 msgid "Clock mode (HH:MM)"
 msgstr "Parasts pulkstenis (St.:Min.)"
 
 #: settings.rstelapsedtime
-#, fuzzy
 msgctxt "settings.rstelapsedtime"
 msgid "Time elapsed (MM:SS)"
 msgstr "Iztērētais laiks (Min.:Sek.)"
@@ -277,7 +275,6 @@ msgid "Configuration files|*.ini|All files|*.*"
 msgstr "Iestatījumu datnes|*.ini|Visas datnes|*.*"
 
 #: settings.rstremainingtime
-#, fuzzy
 msgctxt "settings.rstremainingtime"
 msgid "Remaining time (MM:SS)"
 msgstr "Atlikušais laiks (Min.:Sek.)"
@@ -615,7 +612,7 @@ msgstr "Beigu paziņojums:"
 
 #: tfconfig.lfontname.caption
 msgid "Font size:"
-msgstr ""
+msgstr "Burtu izmērs:"
 
 #: tfconfig.llogoharrow.caption
 msgid "↔"
@@ -829,7 +826,7 @@ msgstr "Atvēlētais laiks beidzies"
 
 #: timelimit.rstclock
 msgid "Start as an ordinary digital clock."
-msgstr "Sākot rādīt parastu pulksteni."
+msgstr "Sākot darbu, rādīt pulksteni."
 
 #: timelimit.rstexit
 msgid "Exit at the end of countdown."
@@ -837,7 +834,7 @@ msgstr "Kad laiks iztecējis, aizvērt šo programmu."
 
 #: timelimit.rsthotkey
 msgid "Start with opened hot-key table."
-msgstr ""
+msgstr "Atvērt arī īsinājumu taustiņu logu."
 
 #: timelimit.rstlang
 msgid "Set the interface language (nn is the language code)."
@@ -865,7 +862,7 @@ msgstr "Kad laiks iztecējis, palaist citu programmu."
 
 #: timelimit.rstrunparameters
 msgid "Parameters for the program to launch."
-msgstr ""
+msgstr "Palaižamās programmas parametri."
 
 #: timelimit.rststart
 msgid "Starts the countdown."
@@ -873,9 +870,8 @@ msgstr "Palaižot programmu, sākt laika atskaiti."
 
 #: timelimit.rsttime
 msgid "Time limit (minutes)."
-msgstr ""
+msgstr "Laika ierobežojums (minūtēs)."
 
 #: timelimit.rstusage
 msgid "Usage"
 msgstr "Lietošana"
-

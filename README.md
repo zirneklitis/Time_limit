@@ -3,7 +3,7 @@
 Version:
 --------
 
-0.10.03
+0.10.04
 
 In short:
 ---------
@@ -44,10 +44,10 @@ Hotkey | Purpose
 [`b`] | Border-less on/off.
 [`F1`], [`h`] | This help.
 [`m`], Mouse right click | Menu window.
-[`Right`], [`Up`] | Increase time by 10 seconds.
-[`Left`], [`Down`] | Decrease time by 10 seconds.
-[`Shift`]_[`Right`], [`Shift`]_[`Up`] | Increase time by 1 minute.
-[`Shift`]_[`Left`], [`Shift`]_[`Down`] | Decrease time by 1 minute.
+[`Left`], [`Down`] | Increase remaining time by 10 seconds.
+[`Right`], [`Up`] | Decrease remaining time by 10 seconds.
+[`Shift`]_[`Left`], [`Shift`]_[`Down`] | Increase remaining time by 1 minute.
+[`Shift`]_[`Right`], [`Shift`]_[`Up`] | Decrease remaining time by 1 minute.
 [`r`], Mouse middle click | reset timer.
 [`c`] | Clock mode.
 [`e`] | Elapsed time mode.

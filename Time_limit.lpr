@@ -169,9 +169,9 @@ begin
     end;
     FConfig.ChExit.Checked := ExitCounter;
     FConfig.RGrTimerMode.ItemIndex := ClockMode;
-    If ShowHotKey then FConfig.BHotKeys.Click;
     Application.CreateForm(TFConsole, FConsole);
     FTimer.RUNING := StartCounter;
+    If ShowHotKey then FConfig.BHotKeys.Click;
     Application.Run;
 end.
 

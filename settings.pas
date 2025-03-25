@@ -163,7 +163,6 @@ type
    procedure EWarning1KeyPress(Sender: TObject; var Key: char);
    procedure EWarning2KeyPress(Sender: TObject; var Key: char);
    procedure EWarning3KeyPress(Sender: TObject; var Key: char);
-   procedure FormActivate(Sender: TObject);
    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
    procedure FormCreate(Sender: TObject);
    procedure GrConsoleResize(Sender: TObject);
@@ -584,10 +583,6 @@ begin
      end;
 end;
 
-procedure TFConfig.FormActivate(Sender: TObject);
-begin
-   BSettingsA.Enabled := (FTimer.RUNING or (RGrTimerMode.ItemIndex = 2));
-end;
 
 procedure TFConfig.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
@@ -622,7 +617,11 @@ begin
         begin
           Self.Visible := false;
           Ftimer.Show;
-        end;
+        end
+     else
+       begin
+          Ftimer.Show;
+     end;
      if RGrTimerMode.ItemIndex = 2 then Ftimer.TimerFontSize;
 end;
 
@@ -678,9 +677,6 @@ end;
 
 procedure TFConfig.ChangeMode;
 begin
-     BSettingsA.Enabled := (FTimer.RUNING or (RGrTimerMode.ItemIndex = 2));
-     BSettingsAR.Enabled := not (RGrTimerMode.ItemIndex = 2);
-     BSettingsARR.Enabled := not (RGrTimerMode.ItemIndex = 2);
      PEndNote.Enabled := not (RGrTimerMode.ItemIndex = 2);
      FTimer.TimerFontSize;
      BShowClockCaption;

@@ -27,7 +27,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MinorVersionNr Value="10"/>
-      <RevisionNr Value="3"/>
+      <RevisionNr Value="4"/>
       <Language Value="0809"/>
       <StringTable Comments="A windowed/full-screen countdown timer." FileDescription="A countdown timer." LegalCopyright="Kārlis Kalviškis, GPLv3" LegalTrademarks="Kārlis Kalviškis  &lt;eko@lanet.lv>" OriginalFilename="Time_limit" ProductName="Time limit (Countdown timer)" ProductVersion="Слава Україні!"/>
     </VersionInfo>
@@ -113,6 +113,7 @@
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>
+      <SmallerCode Value="True"/>
     </CodeGeneration>
     <Linking>
       <Debugging>
