@@ -805,6 +805,15 @@ msgctxt "tftimer.lmessage.caption"
 msgid "The time is over"
 msgstr ""
 
+#: tftimer.lnumberheight.caption
+msgctxt "tftimer.lnumberheight.caption"
+msgid "69"
+msgstr ""
+
+#: tftimer.lnumberwidth.caption
+msgid "44::44"
+msgstr ""
+
 #: tftimer.ltimeover.caption
 msgctxt "tftimer.ltimeover.caption"
 msgid "The time is over"

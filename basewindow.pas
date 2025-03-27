@@ -31,8 +31,10 @@ type
   TFTimer = class(TForm)
      ILogo: TImage;
      ILogoList: TImageList;
-     LMessage: TLabel;
-     LTimeOver: TLabel;
+     LNumberWidth: TLabel;
+     LNumberHeight: TLabel;
+     LMessage: TLabel;                     // Text message when the time is over.
+     LTimeOver: TLabel;                    // Text message when the time has run out, but counting is not stopped.
      RememberSetings: TIniPropStorage;
      LClock: TLabel;
      LClockM: TLabel;
@@ -100,6 +102,7 @@ type
      LogoMinHeight : Integer;
      oldTop : Integer;
      oldLeft : Integer;
+     TestFontSize : Integer;
   end;
 
 var
@@ -140,6 +143,7 @@ begin
   Self.Color := ColourB0;
   MyColour :=  Self.Color;
   LClock.Font.Color := ColourT0;
+  TestFontSize := 40;
 
   // Reads the included logo
   LogoMinHeight := 9;
@@ -246,8 +250,14 @@ procedure TFTimer.FormMouseDown(Sender: TObject; Button: TMouseButton;
 begin
   case Button of
        mbLeft: if FConfig.RGrTimerMode.ItemIndex <> 2 then RUNING := not RUNING;
-       mbRight: FConfig.Show;
-       mbMiddle: ResetTimer;
+       mbRight:
+         begin
+         if Fconsole.Visible then
+          Fconsole.Show
+         else
+          FConfig.Show;
+         end;
+        mbMiddle: ResetTimer;
   end;
 end;
 
@@ -546,6 +556,8 @@ begin
       SProgressBar.Brush.Color := TextColour;
       LTimeOver.Font.Color := TextColour;
       LMessage.Font.Color := TextColour;
+      LNumberWidth.Font.Color := BackgroundColour;
+      LNumberHeight.Font.Color := BackgroundColour;
   end;
   MyColour :=  BackgroundColour;
   MyTColour :=  TextColour;
@@ -576,13 +588,19 @@ end;
 procedure TFTimer.TimerFontSize;
 var
       fontsize : integer;
-      dpi_ratio : real;
+      BarHeight : integer;
 begin
-  dpi_ratio := PixelsPerInch / 96;
-  if Width / Height < 1.8 then
-      fontsize := round(Width / (4 * dpi_ratio))
+  LNumberWidth.Font.Name := LClockM.Font.Name;
+  LNumberWidth.Font.Style:= LClockM.Font.Style;
+  LNumberWidth.Font.Size :=  TestFontSize;
+  LNumberHeight.Font := LNumberWidth.Font;
+  if PProgressBar.Visible then BarHeight := Height - PProgressBar.Height else BarHeight := Height;
+  // Window is higher then font.
+  if Width / BarHeight < LNumberWidth.Width / LNumberHeight.Height then
+      fontsize :=  round(Width / (LNumberWidth.Width / TestFontSize) )
   else
-      fontsize := round(Height / (2 * dpi_ratio));
+  // Window is wider then font.
+      fontsize := round(BarHeight / (LNumberHeight.Height / TestFontSize));
   if FConfig.ChIncreasingFontSize.Checked and (FConfig.RGrTimerMode.ItemIndex <> 2) then
       fontsize := round(fontsize / 100 *
          (FConfig.EIncreasingFontSize.Value +

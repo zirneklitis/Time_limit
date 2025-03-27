@@ -3,12 +3,13 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="15">
+    <Units Count="14">
       <Unit0>
         <Filename Value="Time_limit.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TimeLimit"/>
-        <TopLine Value="151"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="150"/>
         <CursorPos Y="175"/>
         <UsageCount Value="204"/>
         <Loaded Value="True"/>
@@ -20,10 +21,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="BaseWindow"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="174"/>
-        <CursorPos X="26" Y="183"/>
+        <TopLine Value="247"/>
+        <CursorPos Y="259"/>
         <UsageCount Value="204"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -35,8 +35,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="664"/>
-        <CursorPos Y="680"/>
+        <TopLine Value="814"/>
+        <CursorPos Y="827"/>
         <UsageCount Value="206"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -77,9 +77,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="104"/>
-        <CursorPos X="8" Y="106"/>
-        <UsageCount Value="98"/>
+        <TopLine Value="125"/>
+        <CursorPos X="5" Y="129"/>
+        <UsageCount Value="121"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -87,178 +87,172 @@
         <Filename Value="classes.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="40" Y="13"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="10"/>
       </Unit7>
       <Unit8>
-        <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/syshelph.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="5"/>
-        <CursorPos X="3" Y="5"/>
-        <UsageCount Value="1"/>
-      </Unit8>
-      <Unit9>
         <Filename Value="/usr/lib64/lazarus/lcl/controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="14" Y="1511"/>
-        <UsageCount Value="3"/>
-      </Unit9>
-      <Unit10>
+        <UsageCount Value="1"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="/usr/lib64/lazarus/lcl/include/font.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1186"/>
         <CursorPos Y="1197"/>
-        <UsageCount Value="10"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="8"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="/usr/lib64/lazarus/lcl/include/application.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1353"/>
         <CursorPos Y="1370"/>
-        <UsageCount Value="10"/>
-      </Unit11>
-      <Unit12>
+        <UsageCount Value="8"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="/usr/lib64/lazarus/lcl/include/customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="392"/>
         <CursorPos Y="406"/>
-        <UsageCount Value="10"/>
-      </Unit12>
-      <Unit13>
+        <UsageCount Value="8"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="/usr/lib64/lazarus/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2947"/>
         <CursorPos Y="2959"/>
-        <UsageCount Value="10"/>
-      </Unit13>
-      <Unit14>
+        <UsageCount Value="8"/>
+      </Unit12>
+      <Unit13>
         <Filename Value="/usr/lib64/lazarus/lcl/include/wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="7835"/>
         <CursorPos Y="7848"/>
-        <UsageCount Value="10"/>
-      </Unit14>
+        <UsageCount Value="8"/>
+      </Unit13>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Time_limit.lpr"/>
-        <Caret Line="168" Column="24" TopLine="146"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="376" Column="19" TopLine="355"/>
       </Position1>
       <Position2>
         <Filename Value="basewindow.pas"/>
-        <Caret Line="595" Column="95" TopLine="590"/>
+        <Caret Line="412" Column="18" TopLine="391"/>
       </Position2>
       <Position3>
-        <Filename Value="settings.pas"/>
-        <Caret Line="628" Column="13" TopLine="612"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="414" Column="46" TopLine="393"/>
       </Position3>
       <Position4>
-        <Filename Value="settings.pas"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="425" Column="23" TopLine="404"/>
       </Position4>
       <Position5>
-        <Filename Value="settings.pas"/>
-        <Caret Line="34" Column="15" TopLine="12"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="427" Column="51" TopLine="406"/>
       </Position5>
       <Position6>
-        <Filename Value="settings.pas"/>
-        <Caret Line="35" Column="15" TopLine="13"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="480" Column="11" TopLine="458"/>
       </Position6>
       <Position7>
-        <Filename Value="settings.pas"/>
-        <Caret Line="36" Column="15" TopLine="14"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="498" Column="15" TopLine="482"/>
       </Position7>
       <Position8>
-        <Filename Value="settings.pas"/>
-        <Caret Line="140" Column="24" TopLine="119"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="37" Column="46" TopLine="24"/>
       </Position8>
       <Position9>
-        <Filename Value="settings.pas"/>
-        <Caret Line="141" Column="24" TopLine="120"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="371" Column="21" TopLine="350"/>
       </Position9>
       <Position10>
-        <Filename Value="settings.pas"/>
-        <Caret Line="142" Column="24" TopLine="121"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="389" Column="20" TopLine="368"/>
       </Position10>
       <Position11>
-        <Filename Value="settings.pas"/>
-        <Caret Line="442" Column="30" TopLine="420"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="479" Column="12" TopLine="457"/>
       </Position11>
       <Position12>
-        <Filename Value="settings.pas"/>
-        <Caret Line="444" Column="16" TopLine="422"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="498" Column="15" TopLine="476"/>
       </Position12>
       <Position13>
-        <Filename Value="settings.pas"/>
-        <Caret Line="543" Column="24" TopLine="521"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="499" Column="14" TopLine="477"/>
       </Position13>
       <Position14>
-        <Filename Value="settings.pas"/>
-        <Caret Line="554" Column="29" TopLine="532"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="500" Column="14" TopLine="478"/>
       </Position14>
       <Position15>
-        <Filename Value="settings.pas"/>
-        <Caret Line="568" Column="24" TopLine="546"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="501" Column="14" TopLine="479"/>
       </Position15>
       <Position16>
-        <Filename Value="settings.pas"/>
-        <Caret Line="581" Column="29" TopLine="559"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="502" Column="14" TopLine="480"/>
       </Position16>
       <Position17>
-        <Filename Value="settings.pas"/>
-        <Caret Line="589" Column="7" TopLine="567"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="551" Column="16" TopLine="529"/>
       </Position17>
       <Position18>
-        <Filename Value="settings.pas"/>
-        <Caret Line="591" TopLine="576"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="36" Column="14" TopLine="24"/>
       </Position18>
       <Position19>
-        <Filename Value="settings.pas"/>
-        <Caret Line="587" TopLine="576"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="376" Column="19" TopLine="355"/>
       </Position19>
       <Position20>
-        <Filename Value="settings.pas"/>
-        <Caret Line="624" Column="2" TopLine="607"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="412" Column="18" TopLine="391"/>
       </Position20>
       <Position21>
-        <Filename Value="settings.pas"/>
-        <Caret Line="683" Column="9" TopLine="662"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="414" Column="46" TopLine="393"/>
       </Position21>
       <Position22>
-        <Filename Value="settings.pas"/>
-        <Caret Line="441" Column="30" TopLine="428"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="425" Column="23" TopLine="404"/>
       </Position22>
       <Position23>
-        <Filename Value="settings.pas"/>
-        <Caret Line="443" Column="16" TopLine="428"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="427" Column="51" TopLine="406"/>
       </Position23>
       <Position24>
-        <Filename Value="settings.pas"/>
-        <Caret Line="542" Column="24" TopLine="520"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="480" Column="11" TopLine="458"/>
       </Position24>
       <Position25>
-        <Filename Value="settings.pas"/>
-        <Caret Line="553" Column="29" TopLine="531"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="504" Column="14" TopLine="482"/>
       </Position25>
       <Position26>
-        <Filename Value="settings.pas"/>
-        <Caret Line="567" Column="24" TopLine="545"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="505" Column="13" TopLine="483"/>
       </Position26>
       <Position27>
-        <Filename Value="settings.pas"/>
-        <Caret Line="580" Column="29" TopLine="558"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="506" Column="13" TopLine="484"/>
       </Position27>
       <Position28>
-        <Filename Value="settings.pas"/>
-        <Caret Line="592" Column="30" TopLine="570"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="545" Column="15" TopLine="523"/>
       </Position28>
       <Position29>
-        <Filename Value="Time_limit.lpr"/>
-        <Caret Line="175" TopLine="151"/>
+        <Filename Value="basewindow.pas"/>
+        <Caret Line="552" Column="15" TopLine="530"/>
       </Position29>
       <Position30>
         <Filename Value="basewindow.pas"/>
-        <Caret Line="586" Column="43" TopLine="573"/>
+        <Caret Line="604" Column="54" TopLine="585"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -266,14 +260,24 @@
       <Modes ActiveMode="default"/>
     </RunParams>
     <HistoryLists Count="3">
-      <List0 Name="LaunchingApplication" Type="File" Count="2">
-        <Item2 Value="/usr/bin/konsole -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      <List0 Name="LaunchingApplication" Type="File" Count="1">
+        <Item1 Value="/usr/bin/konsole -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
       </List0>
-      <List1 Name="CommandLineParameters" Count="3">
+      <List1 Name="CommandLineParameters" Count="2">
+        <Item1 Value="--hotkey"/>
         <Item2 Value="-s"/>
-        <Item3 Value="--hotkey"/>
       </List1>
-      <List2 Name="WorkingDirectory" Type="File" Count="1"/>
     </HistoryLists>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkData"/>
+        <WatchData Value="LClockM.height"/>
+        <WatchScope Value="wpsGlobal"/>
+        <WatchKind Value="wpkWrite"/>
+        <InitialEnabled Value="False"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

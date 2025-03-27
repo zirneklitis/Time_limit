@@ -1,5 +1,5 @@
 object FTimer: TFTimer
-  Left = 636
+  Left = 634
   Height = 242
   Top = 254
   Width = 494
@@ -21,8 +21,37 @@ object FTimer: TFTimer
   OnMouseDown = FormMouseDown
   OnResize = FormResize
   OnShow = FormShow
-  SessionProperties = 'Height;ILogo.Anchors;Left;Top;Width;WindowState;PProgressBar.Visible'
+  SessionProperties = 'Height;ILogo.Anchors;Left;PProgressBar.Visible;Top;Width;WindowState'
   LCLVersion = '2.2.6.0'
+  object LNumberWidth: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 0
+    Height = 13
+    Top = 0
+    Width = 36
+    Caption = '44::44'
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowAccelChar = False
+  end
+  object LNumberHeight: TLabel
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 480
+    Height = 13
+    Top = 0
+    Width = 14
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    Caption = '69'
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowAccelChar = False
+  end
   object ILogo: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

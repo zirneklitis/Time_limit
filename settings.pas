@@ -629,7 +629,17 @@ procedure TFConfig.BChangeFontClick(Sender: TObject);
 begin
   FontDialog.Font := BChangeFont.Font;
   if FontDialog.Execute then
+    begin
       BChangeFont.Font :=  FontDialog.Font;
+      BChangeFont.Font.Size:= Self.Font.Size;
+      FTimer.LNumberWidth.Font := FontDialog.Font;
+      FTimer.LNumberWidth.Font.Size := FTimer.TestFontSize;
+      FTimer.LNumberHeight.Font := FTimer.LNumberWidth.Font;
+      BSettingsA.Click;
+      FTimer.TimerFontSize;
+      FTimer.LNumberWidth.Font.Color := FTimer.Color;
+      FTimer.LNumberHeight.Font.Color := FTimer.Color;
+    end;
 end;
 
 procedure TFConfig.BAboutClick(Sender: TObject);
